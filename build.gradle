@@ -6,9 +6,16 @@
  * user guide available at https://docs.gradle.org/5.1/userguide/java_library_plugin.html
  */
 
+/**
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+}
+*/
+plugins {
+	id 'java'
+    id 'war'  
+    id 'eclipse'    
 }
 
 repositories {
@@ -17,13 +24,31 @@ repositories {
     jcenter()
 }
 
+
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
+   // api 'org.apache.commons:commons-math3:3.6.1'
+    
+    // Persistencia
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.0.Final'
+    compile 'com.h2database:h2:1.4.194'
 
+	// Servicios web
+	compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.27'
+	compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.27'
+	compile group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '2.27'
+	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: '2.27'
+	compile group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: '2.27'
+	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.27'
+	
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:26.0-jre'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+}
+
+war {
+    archivesBaseName = 'estacionamiento'
 }
