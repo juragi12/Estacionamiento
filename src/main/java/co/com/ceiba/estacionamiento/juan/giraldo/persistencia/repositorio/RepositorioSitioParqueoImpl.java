@@ -1,54 +1,69 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio;
 
+import java.util.Iterator;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.SitioParqueo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.repositorio.RepositorioSitioParqueo;
-import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.adaptador.SitioParqueoAdapter;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
-import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
 public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 
 	private EntityManager entityManager;
 	
+	public final String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA = "SitioParqueo.findByPlacaVehiculo";
+	public final String PLACA = "placa";
+
 	public RepositorioSitioParqueoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-	
+
 	@Override
-	public SitioParqueoEntidad parquearVehiculo(SitioParqueo sitioParqueo, VehiculoEntidad vehiculoEntidad) {
-		
+	public SitioParqueoEntidad parquearVehiculo(SitioParqueoEntidad sitioParqueoEntidad) {
+
 		this.entityManager.getTransaction().begin();
-		SitioParqueoEntidad sitioParqueoEntidad = 
-				SitioParqueoAdapter.getSitioParqueoEntidad(sitioParqueo, vehiculoEntidad);
 		this.entityManager.persist(sitioParqueoEntidad);
-		
-//        System.out.println(" sitioParqueoEntidad : " + sitioParqueoEntidad.getId() );
-		
 		this.entityManager.getTransaction().commit();
-//        SitioParqueoEntidad sP =  this.entityManager.find(SitioParqueoEntidad.class, 2);        
-//        System.out.println("Se Almacena Sitio de parqueo : " + sP.getPosicion() +
-//        		" El vehiculo con placa: " + sP.getVehiculo().getPlaca());
 
 		return sitioParqueoEntidad;
 	}
 
 	@Override
 	public SitioParqueoEntidad obtenerSitioParqueo(Vehiculo vehiculo) {
+
+		Query query = entityManager.createNamedQuery(QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA);
+		query.setParameter(PLACA, vehiculo.getPlaca());
 		
-		Query query = entityManager.createNamedQuery("SitioParqueo.findByPlacaVehiculo");
-		query.setParameter("placa", vehiculo.getPlaca());
-		return (SitioParqueoEntidad) query.getSingleResult();
+		@SuppressWarnings("unchecked")
+		List<Object> lista = query.getResultList();
+		
+		if ( ! lista.isEmpty() ) {
+			Iterator<Object> iterator = lista.iterator();
+			while (iterator.hasNext()) {
+				SitioParqueoEntidad sp = (SitioParqueoEntidad) iterator.next();
+				
+				if ( sp.isActivo() && 
+						(sp.getVehiculo().getPlaca() == vehiculo.getPlaca() ) ) {
+					return sp;
+				}
+			}
+		}
+		
+		return null;
 
 	}
 
 	@Override
-	public SitioParqueoEntidad liberar(SitioParqueo sitioParqueo) {
-		// TODO Auto-generated method stub
-		return null;
+	public SitioParqueoEntidad liberar(SitioParqueoEntidad sitioParqueoEntidad) {
+
+		this.entityManager.getTransaction().begin();
+		this.entityManager.merge(sitioParqueoEntidad);
+		this.entityManager.getTransaction().commit();
+
+		return sitioParqueoEntidad;
 	}
 
 }

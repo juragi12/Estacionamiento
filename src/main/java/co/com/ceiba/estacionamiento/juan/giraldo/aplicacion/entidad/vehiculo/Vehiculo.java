@@ -39,10 +39,4 @@ public class Vehiculo {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	public void imprimirTipo() {
-		System.out.println("Vehiculo");	
-	}
-
-
 }

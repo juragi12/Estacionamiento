@@ -9,10 +9,4 @@ public class Moto extends Vehiculo {
 	public Moto() {
 		super();
 	}
-
-	@Override
-	public void imprimirTipo() {
-		System.out.println("Moto");		
-	}
-
 }

@@ -1,8 +1,8 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.AbstractFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.EntidadFactory;
 
-public class FactoryVehiculo extends AbstractFactory {
+public class VehiculoFactory extends EntidadFactory {
 	
 	@Override
 	public Vehiculo getVehiculo(String tipoVehiculo) {

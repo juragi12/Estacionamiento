@@ -4,5 +4,8 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Veh
 
 public interface ValidadorIngresoVehiculo {
 
+	/*
+	 * Verifica la regla de ingreso para un vehiculo
+	 */
 	public Boolean validaIngreso(Vehiculo vehiculo);
 }

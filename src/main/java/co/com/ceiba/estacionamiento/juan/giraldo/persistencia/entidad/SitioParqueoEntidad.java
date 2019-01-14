@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,7 @@ import javax.persistence.NamedQuery;
 public class SitioParqueoEntidad {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private boolean activo;
@@ -59,4 +60,14 @@ public class SitioParqueoEntidad {
 	public boolean isActivo() {
 		return activo;
 	}
+	
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+
 }

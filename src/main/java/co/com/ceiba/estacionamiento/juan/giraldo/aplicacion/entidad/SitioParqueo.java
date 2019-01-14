@@ -54,8 +54,4 @@ public class SitioParqueo {
 	public void setPosicion(int posicion) {
 		this.posicion = posicion;
 	}
-	
-	public void imprimirTipo() {
-		System.out.println("Sitio Vehiculo");
-	};
 }

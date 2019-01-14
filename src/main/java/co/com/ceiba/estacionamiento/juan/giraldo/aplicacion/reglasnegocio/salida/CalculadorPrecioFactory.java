@@ -8,6 +8,9 @@ public class CalculadorPrecioFactory {
 	public static final String TIPO_VEHICULO_CARRO = "CARRO" ;
 	public static final int UMBRAL_CC = 500 ;
 	
+	/*
+	 * Retorna el tipo de calculador según el tipo de vehiculo y su cc
+	 */
 	public static CalculadorPrecioParqueo getCalculadorPrecioParqueo(Vehiculo vehiculo) {
 		
 		if ( vehiculo.getTipo().equals(TIPO_VEHICULO_CARRO) ) {

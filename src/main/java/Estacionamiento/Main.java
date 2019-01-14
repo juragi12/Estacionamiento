@@ -3,13 +3,17 @@ package Estacionamiento;
 import java.util.Calendar;
 import java.util.Date;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.AdminEstacionamiento;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.adaptador.VehiculoAdapter;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.AbstractFactory;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.ProcutorFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.EntidadFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.CrearEntidadFactory;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.SitioParqueo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Moto;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.Temporizador;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ReglaEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ContextEntradaVehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoDias;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoVehiculo;
@@ -24,12 +28,13 @@ import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEn
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioFactory;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioSitioParqueoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioVehiculoImpl;
+import co.com.ceiba.estacionamiento.juan.giraldo.servicio.EstacionamientoWS;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		
+	/*	
 		
 		// ################### Crear vehiculos ################################
 		// Crea fabrica de Vehiculos
@@ -86,11 +91,9 @@ public class Main {
         System.out.println("Se Almacena Vehiculo : " + vehEnt.getId());
         
         // ################## Usando repositorio SitioParqueo ####################
-        sitioMoto1.setActivo(true);
-        sitioMoto1.setFechaInicio(calendar.getTime());
-        sitioMoto1.setPosicion(1);
+        SitioParqueoEntidad sitioMotoEnt1 = new SitioParqueoEntidad(true, new Date(),null, 1, vehEnt);
         RepositorioSitioParqueoImpl repositorioSitioParqueo = RepositorioFactory.obtenerRepositorioSitioParqueo();
-        SitioParqueoEntidad sitParEnt = repositorioSitioParqueo.parquearVehiculo(sitioMoto1, vehEnt);
+        SitioParqueoEntidad sitParEnt = repositorioSitioParqueo.parquearVehiculo(sitioMotoEnt1);
         System.out.println("Se parquea vehiculo : " + 
         		sitParEnt.getVehiculo().getPlaca() +
         		" En el sitio : " + sitParEnt.getPosicion() +
@@ -106,6 +109,21 @@ public class Main {
         		" Con Id de sitio "+ sitParEnt2.getId()
         		);
         
+		// ############# probar AdminEstacionamiento ##########################
+		AdminEstacionamiento admin = new AdminEstacionamiento();
+		admin.parquearVehiculo(vehEnt);
+		System.out.println("Admin Estacionamiento agregar posicion :"+ 
+				admin.getParqueadero().get(0).getPosicion()
+				);
+		
+		System.out.println("###########PARQUEADERO##############");
+		for ( SitioParqueoEntidad st : admin.getParqueadero() ) {
+			System.out.println("Sitio Parqueo " + st.getPosicion()
+			+ " Vehiculo " + st.getVehiculo().getPlaca() );
+		}
+		
+		admin.removerSitioParqueo(sitParEnt);		
+        
         // ############### Se calcula precio para la salida ##################
         TiempoEstadia tiemEst = Temporizador.calcularTiempoEstadia(sitParEnt2.getFechaInicio());
         System.out.println("Se cobran : "+ tiemEst.getDias() + " Dias y " + tiemEst.getHoras() + " Horas" );
@@ -118,12 +136,60 @@ public class Main {
 		ContextSalidaVehiculo ctxCalculador = new ContextSalidaVehiculo(calcularPrecioP);
 		int precio = ctxCalculador.calcularPrecioAPagar(tiemEst);
 		System.out.println("Calcula precio para Moto bajo CC 0: "+ precio);
+		// Con ReglaEstacionamiento
+		ReglaEstacionamiento.calcularPrecioParqueo(vehiculoAparcado, tiemEst);
 
 		// ######################## Validar ingreso ##############################
 		ValidadorIngresoVehiculo validadorIngresoMoto1 = new ValidadorIngresoDias();
 		ContextEntradaVehiculo ctxValidaEntradaVeh = new ContextEntradaVehiculo(validadorIngresoMoto1);
 		boolean valido = ctxValidaEntradaVeh.validaIngreso(moto1);
 		System.out.println("Valida ingreso para Moto bajo CC false: "+ valido);
+		// Con ReglaEstacionamiento
+		ReglaEstacionamiento.validarIngreso(moto1);
+		
+		*/
+		
+		// ## INGRESO DE VEHICULO usando el servicio ###
+		Vehiculo moto1 = new Moto();
+		moto1.setPlaca("BAA-111");
+        moto1.setTipo("MOTO");
+        moto1.setCilindraje(250);
+        
+		Vehiculo moto2 = new Moto();
+		moto2.setPlaca("BBA-111");
+		moto2.setTipo("MOTO");
+		moto2.setCilindraje(250);
+        
+//        ServicioEstacionamientoImpl srv = new ServicioEstacionamientoImpl();
+//        
+//        System.out.println("Sitio Parqueo " +
+//        		srv.registrarIngresoVehiculo(moto1).getVehiculo().getPlaca());
+//        
+//        
+//        System.out.println("Sitio Parqueo 2 " +
+//        		srv.registrarIngresoVehiculo(moto2).getVehiculo().getPlaca()); 
+//   
+//		// ## REGISTRAR SALIDA DE VEHICULO
+//		System.out.println( "Precio a pagar " +
+//				srv.registrarSalidaVehiculo(moto1) );		
+//		for ( SitioParqueoEntidad st : AdminEstacionamiento.getParqueadero() ) {
+//			System.out.println("Sitio Parqueo " + st.getPosicion()
+//			+ " Vehiculo " + st.getVehiculo().getPlaca() );
+//		} 
+// 
+//		
+//		// ## RETORNAR VEHICULOS PARQUEADOS #####
+//		System.out.println("###########PARQUEADERO##############");
+//		for ( SitioParqueoEntidad st : srv.consultarVehiculos() ) {
+//			System.out.println("Sitio Parqueo " + st.getPosicion()
+//			+ " Vehiculo " + st.getVehiculo().getPlaca() );
+//		}
+//		
+
+		EstacionamientoWS e = new EstacionamientoWS();
+		e.registrarIngreso(moto2);
+		e.consultarParqueadero();
+		e.registrarSalida(moto2);
 	}
 
 }

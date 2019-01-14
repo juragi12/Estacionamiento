@@ -8,24 +8,67 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 
 @Path(value = "/estacionamiento")
 public class EstacionamientoWS {
 
-	
+	ServicioEstacionamiento servicioEstacionamiento = 
+			new ServicioEstacionamientoImpl(); 
+	/*
+	 * Validar los servicios REST
+	 */
 	@GET
 	@Produces(value = "application/json")
 	public String welcome() {
 		return "Hola al Estacionamiento Juan Giraldo";
 	}
 	
+	/*
+	 * Agrega un vehiculo al parqueadero
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(value = "application/json")
-	@Path(value = "agregar")
-	public Response agregar(Vehiculo vehiculo){
+	@Path(value = "registraringreso")
+	public Response registrarIngreso(Vehiculo vehiculo){
 		
-		return Response.ok(vehiculo).build();	 
+		SitioParqueoEntidad sitioParqueo =
+				servicioEstacionamiento.registrarIngresoVehiculo(vehiculo);
+		
+		System.out.println("id Veh : " + sitioParqueo.getVehiculo().getId() );
+		System.out.println("id Pos : " + sitioParqueo.getPosicion() );
+				
+		return Response.ok(sitioParqueo).build();	 
 	} 
+	
+	/*
+	 * Registra la salida de un vehiculo al parqueadero y retorna el valor a pagar
+	 */
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(value = "application/json")
+	@Path(value = "registrarsalida")
+	public Response registrarSalida(Vehiculo vehiculo){
+		
+		int precioAPagar =
+				servicioEstacionamiento.registrarSalidaVehiculo(vehiculo);
+		
+		return Response.ok(precioAPagar).build();
+	}
+	
+	/*
+	 * Consulta vehiculos en el estacionamiento
+	 */
+	@GET
+	@Produces(value = "application/json")
+	@Path(value = "consultar")
+	public Response consultarParqueadero() {
+		
+		return Response.ok(servicioEstacionamiento.consultarVehiculos()).build();	 
+		
+	}	
+	
 }
