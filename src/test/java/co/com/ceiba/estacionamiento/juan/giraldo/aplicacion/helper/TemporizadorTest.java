@@ -37,7 +37,7 @@ public class TemporizadorTest {
 		
 		int horasEstadia = 10;
 		int contDias = 1;
-		int contHoras = 1;
+		int contHoras = 0;
 		
 		//Arrange
 		Date fechaInicio = new Date();

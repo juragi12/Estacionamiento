@@ -13,7 +13,7 @@ import databuilder.VehiculoDataBuilder;
 public class ContextoIngresoVehiculoTest {
 
 	@Test
-	public void testValidarIngresoDias() {
+	public void testContextoValidarIngresoDias() {
 		
 		// Arrange
 		ValidadorIngresoDias validadorIngresoDias = mock(ValidadorIngresoDias.class);

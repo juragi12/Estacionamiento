@@ -16,17 +16,18 @@ public class Temporizador {
 	
 		Date fechaFin = new Date();
 	
-		double diferenciaEnMiles = ( fechaFin.getTime() -fechaInicio.getTime() );
+		double diferenciaEnMiles = ( fechaFin.getTime() - fechaInicio.getTime() );
 		long difEnHoras = (long) (   diferenciaEnMiles / ((double) TIEMPO_EN_HORAS)  ) ;
 		
 		long dias = difEnHoras/HORAS_DIA;
 		long horasRestantes = difEnHoras - dias*HORAS_DIA;
 		long horas = horasRestantes;
 		
-		while(horasRestantes > HORAS_DIA_PARQUEO) {
+		if(horasRestantes > HORAS_DIA_PARQUEO) {
 			dias++;
-			horas = horasRestantes-HORAS_DIA_PARQUEO;			
-			horasRestantes = horasRestantes-HORAS_DIA_PARQUEO;
+			horas = 0;
+		}else {
+			horas = horasRestantes;
 		}	
 		
 		TiempoEstadia tiempoEstadia = new TiempoEstadia((int) dias, (int) horas); 
