@@ -1,5 +1,7 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.servicio;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,6 +19,7 @@ public class EstacionamientoWS {
 
 	ServicioEstacionamiento servicioEstacionamiento = 
 			new ServicioEstacionamientoImpl(); 
+	
 	/*
 	 * Validar los servicios REST
 	 */
@@ -34,13 +37,10 @@ public class EstacionamientoWS {
 	@Produces(value = "application/json")
 	@Path(value = "registraringreso")
 	public Response registrarIngreso(Vehiculo vehiculo){
-		
+		        
 		SitioParqueoEntidad sitioParqueo =
 				servicioEstacionamiento.registrarIngresoVehiculo(vehiculo);
-		
-		System.out.println("id Veh : " + sitioParqueo.getVehiculo().getId() );
-		System.out.println("id Pos : " + sitioParqueo.getPosicion() );
-				
+						
 		return Response.ok(sitioParqueo).build();	 
 	} 
 	
@@ -53,6 +53,8 @@ public class EstacionamientoWS {
 	@Path(value = "registrarsalida")
 	public Response registrarSalida(Vehiculo vehiculo){
 		
+		
+        
 		int precioAPagar =
 				servicioEstacionamiento.registrarSalidaVehiculo(vehiculo);
 		
@@ -66,6 +68,8 @@ public class EstacionamientoWS {
 	@Produces(value = "application/json")
 	@Path(value = "consultar")
 	public Response consultarParqueadero() {
+		
+		List<SitioParqueoEntidad> l = servicioEstacionamiento.consultarVehiculos();
 		
 		return Response.ok(servicioEstacionamiento.consultarVehiculos()).build();	 
 		

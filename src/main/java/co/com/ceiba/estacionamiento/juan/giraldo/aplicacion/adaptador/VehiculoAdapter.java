@@ -5,6 +5,8 @@ import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEn
 
 public class VehiculoAdapter {
 
+	private VehiculoAdapter() {}
+	
 	public static Vehiculo getVehiculo(VehiculoEntidad vehiculoEntidad) {
 		return new Vehiculo(
 				vehiculoEntidad.getPlaca(), 

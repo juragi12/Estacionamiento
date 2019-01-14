@@ -14,7 +14,7 @@ public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 
 	private EntityManager entityManager;
 	
-	public final String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA = "SitioParqueo.findByPlacaVehiculo";
+	public final String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA_VEHICULO = "SitioParqueo.findByPlacaVehiculo";
 	public final String PLACA = "placa";
 
 	public RepositorioSitioParqueoImpl(EntityManager entityManager) {
@@ -34,7 +34,9 @@ public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 	@Override
 	public SitioParqueoEntidad obtenerSitioParqueo(Vehiculo vehiculo) {
 
-		Query query = entityManager.createNamedQuery(QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA);
+		SitioParqueoEntidad sp;
+		
+		Query query = entityManager.createNamedQuery(QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA_VEHICULO);
 		query.setParameter(PLACA, vehiculo.getPlaca());
 		
 		@SuppressWarnings("unchecked")
@@ -43,17 +45,16 @@ public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 		if ( ! lista.isEmpty() ) {
 			Iterator<Object> iterator = lista.iterator();
 			while (iterator.hasNext()) {
-				SitioParqueoEntidad sp = (SitioParqueoEntidad) iterator.next();
+				sp = (SitioParqueoEntidad) iterator.next();
 				
-				if ( sp.isActivo() && 
-						(sp.getVehiculo().getPlaca() == vehiculo.getPlaca() ) ) {
-					return sp;
+				if ( sp.isActivo() ) {
+					if ( sp.getVehiculo().getPlaca().equalsIgnoreCase(vehiculo.getPlaca()) ) {
+						return sp;
+					}
 				}
 			}
-		}
-		
+		}		
 		return null;
-
 	}
 
 	@Override

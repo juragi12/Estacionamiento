@@ -68,6 +68,18 @@ public class SitioParqueoEntidad {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
 
 
 }

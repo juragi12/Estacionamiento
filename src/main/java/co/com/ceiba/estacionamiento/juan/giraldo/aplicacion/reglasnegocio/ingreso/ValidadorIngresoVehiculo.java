@@ -7,5 +7,5 @@ public interface ValidadorIngresoVehiculo {
 	/*
 	 * Verifica la regla de ingreso para un vehiculo
 	 */
-	public Boolean validaIngreso(Vehiculo vehiculo);
+	public Boolean validarIngreso(Vehiculo vehiculo);
 }

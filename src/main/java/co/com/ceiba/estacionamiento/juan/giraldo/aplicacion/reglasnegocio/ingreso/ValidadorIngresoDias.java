@@ -8,11 +8,11 @@ public class ValidadorIngresoDias implements ValidadorIngresoVehiculo {
 	public static final int POSICION_LETRA_RESTRICCION_PLACA = 0 ;	
 	
 	@Override
-	public Boolean validaIngreso(Vehiculo vehiculo) {
+	public Boolean validarIngreso(Vehiculo vehiculo) {
 		
 		String placa = vehiculo.getPlaca();
-		char primeraLetraPlaca = placa.charAt(POSICION_LETRA_RESTRICCION_PLACA);		
-		return primeraLetraPlaca != RESTRICCION_PLACA;
+		char letraPlaca = placa.charAt(POSICION_LETRA_RESTRICCION_PLACA);		
+		return letraPlaca != RESTRICCION_PLACA;
 	}
 
 }

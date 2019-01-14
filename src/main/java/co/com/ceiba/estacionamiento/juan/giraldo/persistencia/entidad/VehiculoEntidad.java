@@ -36,5 +36,21 @@ public class VehiculoEntidad {
 	public String getTipo() {
 		return tipo;
 	}	
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 }

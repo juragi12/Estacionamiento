@@ -14,6 +14,8 @@
         	<property name="hibernate.show_sql" value="true"/>
 
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
+            <!--  property name="javax.persistence.jdbc.url" value="jdbc:h2:file:D:\estacionamiento"/ -->
+
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>   
 
         </properties>

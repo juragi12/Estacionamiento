@@ -16,8 +16,8 @@ public class Temporizador {
 	
 		Date fechaFin = new Date();
 	
-		double diferenciaEnMiles = (fechaInicio.getTime() - fechaFin.getTime());
-		long difEnHoras = (long) (  Math.ceil( diferenciaEnMiles / ((double) TIEMPO_EN_HORAS) ) ) ;
+		double diferenciaEnMiles = ( fechaFin.getTime() -fechaInicio.getTime() );
+		long difEnHoras = (long) (   diferenciaEnMiles / ((double) TIEMPO_EN_HORAS)  ) ;
 		
 		long dias = difEnHoras/HORAS_DIA;
 		long horasRestantes = difEnHoras - dias*HORAS_DIA;

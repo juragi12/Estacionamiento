@@ -2,7 +2,7 @@ package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ContextEntradaVehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ContextoIngresoVehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoDias;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoVehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioFactory;
@@ -14,7 +14,7 @@ public class ReglaEstacionamiento {
 	public static boolean validarIngreso(Vehiculo vehiculo) {
 
 		ValidadorIngresoVehiculo validadorIngreso = new ValidadorIngresoDias();
-		ContextEntradaVehiculo ctxValidaEntradaVeh = new ContextEntradaVehiculo(validadorIngreso);
+		ContextoIngresoVehiculo ctxValidaEntradaVeh = new ContextoIngresoVehiculo(validadorIngreso);
 		boolean valido = ctxValidaEntradaVeh.validaIngreso(vehiculo);
 		return valido;
 	}
