@@ -16,6 +16,7 @@ plugins {
 	id 'java'
     id 'war'  
     id 'eclipse'    
+    id 'jacoco'
 }
 
 repositories {
