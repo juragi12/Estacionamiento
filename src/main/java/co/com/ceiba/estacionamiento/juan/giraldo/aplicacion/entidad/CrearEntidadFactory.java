@@ -5,7 +5,6 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Veh
 public class CrearEntidadFactory {
 
 	public static final String TIPO_FABRICA_VEHICULO = "VEHICULO";
-	public static final String TIPO_FABRICA_SITIO_PARQUEO = "SITIO PARQUEO";
 		
 	public static EntidadFactory getFactory(String factoryTipo) {
 		

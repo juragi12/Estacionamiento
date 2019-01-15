@@ -5,6 +5,10 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Veh
 public class ContextoIngresoVehiculo {
 
 	private ValidadorIngresoVehiculo validadorIngresoVehiculo;
+	
+	public ContextoIngresoVehiculo() {
+		
+	}
 
 	public ContextoIngresoVehiculo(ValidadorIngresoVehiculo validadorIngresoVehiculo ) {
 

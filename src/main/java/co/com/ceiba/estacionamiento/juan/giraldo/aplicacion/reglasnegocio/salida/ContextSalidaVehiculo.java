@@ -5,6 +5,10 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia
 public class ContextSalidaVehiculo {
 
 	   private CalculadorPrecioParqueo calculadorprecioParqueo;
+	   
+	   public ContextSalidaVehiculo() {
+		   
+	   }
 
 	   public ContextSalidaVehiculo(CalculadorPrecioParqueo calculadorprecioParqueo){
 	      this.calculadorprecioParqueo = calculadorprecioParqueo;

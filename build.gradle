@@ -46,7 +46,6 @@ dependencies {
     implementation 'com.google.guava:guava:26.0-jre'
 
     // Use JUnit test framework
-    testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.5.4', ext: 'pom'
 	testCompile 'org.mockito:mockito-all:1.10.19'
     testImplementation 'junit:junit:4.12'
 }

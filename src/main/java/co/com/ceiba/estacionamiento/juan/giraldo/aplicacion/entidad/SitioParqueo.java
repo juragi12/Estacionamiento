@@ -5,7 +5,6 @@ import java.util.Date;
 public class SitioParqueo {
 
 	public SitioParqueo(boolean activo, Date fechaInicio, Date fechaFin, int posicion) {
-		super();
 		this.activo = activo;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
