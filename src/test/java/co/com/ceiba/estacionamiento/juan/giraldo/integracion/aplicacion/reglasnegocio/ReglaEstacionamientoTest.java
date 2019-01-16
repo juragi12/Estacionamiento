@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio;
+package co.com.ceiba.estacionamiento.juan.giraldo.integracion.aplicacion.reglasnegocio;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ReglaEstacionamiento;
 import databuilder.VehiculoDataBuilder;
 
 public class ReglaEstacionamientoTest {
@@ -15,8 +16,6 @@ public class ReglaEstacionamientoTest {
 		
 		// Arrange
 		Vehiculo vehiculo = new VehiculoDataBuilder().buildVehiculo();
-//		ContextoIngresoVehiculo ctxValidaEntradaVeh = mock(ContextoIngresoVehiculo.class);
-//		doReturn(true).when(ctxValidaEntradaVeh).validaIngreso(vehiculo);
 		
 		// Act
 		boolean ingresoValido = ReglaEstacionamiento.validarIngreso(vehiculo);
@@ -36,12 +35,6 @@ public class ReglaEstacionamientoTest {
 		// Arrange
 		Vehiculo vehiculoMotoBahoCC = new VehiculoDataBuilder().buildVehiculo();
 		TiempoEstadia tiempoEstadia = new TiempoEstadia(dias, horas);
-		
-//		ContextSalidaVehiculo ctxValidaSalidaVeh = mock(ContextSalidaVehiculo.class);
-//		TiempoEstadia tiempoEstadia = mock(TiempoEstadia.class);
-//		doReturn(dias).when(tiempoEstadia).getDias();
-//		doReturn(horas).when(tiempoEstadia).getHoras();
-//		doReturn(precio).when(ctxValidaSalidaVeh).calcularPrecioAPagar(tiempoEstadia);
 		
 		// Act
 		int precioAPagar = ReglaEstacionamiento.calcularPrecioParqueo(vehiculoMotoBahoCC, tiempoEstadia);

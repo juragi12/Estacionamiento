@@ -1,3 +1,4 @@
+package co.com.ceiba.estacionamiento.juan.giraldo.integracion.persistencia.repositorio;
 //package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio;
 //
 //import static org.junit.Assert.*;
