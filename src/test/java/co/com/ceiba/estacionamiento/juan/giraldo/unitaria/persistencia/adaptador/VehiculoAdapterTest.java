@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.adaptador;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.persistencia.adaptador;
 
 import static org.junit.Assert.*;
 

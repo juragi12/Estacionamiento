@@ -18,5 +18,10 @@ public class ContextoIngresoVehiculo {
 	public Boolean validaIngreso(Vehiculo vehiculo) {
 		return validadorIngresoVehiculo.validarIngreso(vehiculo);
 	}
+	
+	public void setContextoIngresoVehiculo(ValidadorIngresoVehiculo validadorIngresoVehiculo ) {
+
+		this.validadorIngresoVehiculo = validadorIngresoVehiculo;
+	}
 
 }

@@ -17,4 +17,8 @@ public class ContextSalidaVehiculo {
 	   public int calcularPrecioAPagar(TiempoEstadia tiempoEstadia){
 	      return calculadorprecioParqueo.calcularPrecioAPagar(tiempoEstadia);
 	   }
+	   
+	   public void setContextSalidaVehiculo(CalculadorPrecioParqueo calculadorprecioParqueo){
+		   this.calculadorprecioParqueo = calculadorprecioParqueo;
+	   }
 }

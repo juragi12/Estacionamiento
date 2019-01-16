@@ -37,9 +37,9 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 		SitioParqueoEntidad sitParEnt = adminEstacionamiento.parquearVehiculo(vehiculoEnt);
 
 		RepositorioSitioParqueoImpl repositorioSitioParqueo = RepositorioFactory.obtenerRepositorioSitioParqueo();
-		SitioParqueoEntidad sitParEntRet = repositorioSitioParqueo.parquearVehiculo(sitParEnt);
+		SitioParqueoEntidad sitParEntRep = repositorioSitioParqueo.parquearVehiculo(sitParEnt);
 
-		return sitParEntRet;
+		return sitParEntRep;
 	}
 
 	/*

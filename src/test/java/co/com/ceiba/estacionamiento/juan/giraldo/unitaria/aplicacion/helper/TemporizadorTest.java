@@ -1,9 +1,11 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.helper;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.Temporizador;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
 
 import java.util.Calendar;
 import java.util.Date;

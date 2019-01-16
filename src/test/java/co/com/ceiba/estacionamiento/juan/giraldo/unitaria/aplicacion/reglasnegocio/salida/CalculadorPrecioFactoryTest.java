@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.reglasnegocio.salida;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioCarro;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioMotoAltoCC;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioMotoBajoCC;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioParqueo;
 import databuilder.VehiculoDataBuilder;
 
 

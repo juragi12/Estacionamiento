@@ -1,10 +1,11 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.reglasnegocio.ingreso;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoDias;
 import databuilder.VehiculoDataBuilder;
 
 public class ValidadorIngresoDiasTest {

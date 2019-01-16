@@ -1,9 +1,11 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.entidad;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.CrearEntidadFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.EntidadFactory;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.VehiculoFactory;
 public class CrearEntidadFactoryTest {
 
@@ -19,4 +21,6 @@ public class CrearEntidadFactoryTest {
 		assertTrue( entidadFactory instanceof VehiculoFactory );
 	}
 
+	
+	// Pendiente probar la excepcion
 }

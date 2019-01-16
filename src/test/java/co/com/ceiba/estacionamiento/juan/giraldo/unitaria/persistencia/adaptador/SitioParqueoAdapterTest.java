@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.adaptador;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.persistencia.adaptador;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,7 @@ import java.util.Date;
 import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.SitioParqueo;
+import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.adaptador.SitioParqueoAdapter;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 import databuilder.SitioParqueoDataBuilder;

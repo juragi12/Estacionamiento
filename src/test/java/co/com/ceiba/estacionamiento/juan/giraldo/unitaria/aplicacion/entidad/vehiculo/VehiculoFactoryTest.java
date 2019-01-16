@@ -1,9 +1,14 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.entidad.vehiculo;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Carro;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Moto;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.VehiculoFactory;
 
 public class VehiculoFactoryTest {
 

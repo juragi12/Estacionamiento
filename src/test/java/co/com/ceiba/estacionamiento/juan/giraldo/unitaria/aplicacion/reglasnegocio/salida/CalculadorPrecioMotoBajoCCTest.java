@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.reglasnegocio.salida;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
@@ -8,27 +8,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioMotoBajoCC;
 
-public class CalculadorPrecioCarroTest {
+public class CalculadorPrecioMotoBajoCCTest {
 
 	int dias;
 	int horas;
 	int precio;			 
-	CalculadorPrecioCarro calculadorPrecioCarro;
+	CalculadorPrecioMotoBajoCC calculadorPrecioMotoBajoCC;
 	
 	@Before
 	public void init() {
 
-		calculadorPrecioCarro = new CalculadorPrecioCarro();
+		calculadorPrecioMotoBajoCC = new CalculadorPrecioMotoBajoCC();
 		dias = 1;
 		horas = 1;
-		precio = calculadorPrecioCarro.PRECIO_DIA*dias + 
-				calculadorPrecioCarro.PRECIO_HORA*horas;			
+		precio = calculadorPrecioMotoBajoCC.PRECIO_DIA*dias + 
+				calculadorPrecioMotoBajoCC.PRECIO_HORA*horas;		
 	}
 
 	
 	@Test
 	public void testCalcularPrecioAPagar() {
+		
 		// Arrange	
 		TiempoEstadia tiempoEstadia = mock(TiempoEstadia.class);
 		
@@ -37,7 +39,7 @@ public class CalculadorPrecioCarroTest {
 		
 		
 		// Act
-		int precioAPagar = calculadorPrecioCarro.calcularPrecioAPagar(tiempoEstadia);
+		int precioAPagar = calculadorPrecioMotoBajoCC.calcularPrecioAPagar(tiempoEstadia);
 		
 		// Assert
 		assertTrue( precioAPagar == precio );

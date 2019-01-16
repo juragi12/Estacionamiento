@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.reglasnegocio.salida;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -7,6 +7,7 @@ import static org.mockito.Mockito.doReturn;
 import org.junit.Before;
 import org.junit.Test;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioMotoAltoCC;
 
 
 public class CalculadorPrecioMotoAltoCCTest {

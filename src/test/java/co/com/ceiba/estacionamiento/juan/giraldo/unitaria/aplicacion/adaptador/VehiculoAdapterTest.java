@@ -1,9 +1,10 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.adaptador;
+package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.adaptador;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.adaptador.VehiculoAdapter;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 import databuilder.VehiculoDataBuilder;
