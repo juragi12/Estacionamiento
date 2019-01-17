@@ -38,6 +38,20 @@ public class AdminEstacionamiento {
 
 		SitioParqueoEntidad sitioParqueoEntidad = null;	
 		
+		if ( estaParqueado(vehiculoEnt) ) {
+			System.out.println(" Vehiculo ya parqueado");
+			
+			throw new IllegalArgumentException("El vehiculo con placa: "
+					+ vehiculoEnt.getPlaca() 
+					+ "está activo en el parqueadero");
+		}
+		
+		System.out.println("#######################################################################################################################");
+		
+		System.out.println("Contador de Carros: "+ contadorCarros);
+		
+		System.out.println("Contador de Motos: "+contadorMotos);
+		
 		if ( vehiculoEnt.getTipo().equals(MOTO) ) {
 			
 			if ( contadorMotos > SITIOS_MOTO ) return null;
@@ -56,23 +70,44 @@ public class AdminEstacionamiento {
 							contadorCarros , vehiculoEnt);
 		}
 		parqueadero.add(sitioParqueoEntidad);
-		
+				
 		return sitioParqueoEntidad;
 	}
 
 	public SitioParqueoEntidad removerSitioParqueo(SitioParqueoEntidad sitioParqueoEntidad) {
 		
 		Iterator<SitioParqueoEntidad> i = parqueadero.iterator();
+		boolean sitioParqueoLiberado = false;
 		
 		while (i.hasNext()) {
-			SitioParqueoEntidad st = i.next();
-			
+			SitioParqueoEntidad st = i.next();			
 			if ( st.getPosicion() == sitioParqueoEntidad.getPosicion() ) {
 				i.remove();
+				sitioParqueoLiberado = true;
 			}
 		}   
-			
+		
+		if (sitioParqueoEntidad.getVehiculo().getTipo().equalsIgnoreCase(MOTO) && sitioParqueoLiberado) {
+			contadorMotos--;
+		}		
+		if (sitioParqueoEntidad.getVehiculo().getTipo().equalsIgnoreCase(CARRO) && sitioParqueoLiberado ) {
+			contadorCarros--;
+		}			
 		return sitioParqueoEntidad;
 	}
-
+	
+	public boolean estaParqueado(VehiculoEntidad vehiculoEnt) {
+		
+		Iterator<SitioParqueoEntidad> i = parqueadero.iterator();
+		
+		while (i.hasNext()) {
+			SitioParqueoEntidad st = i.next();			
+			if ( st.getVehiculo().getPlaca().equalsIgnoreCase(vehiculoEnt.getPlaca()) ) {
+				return true;
+			}
+		}  
+		
+		return false;
+	}
+	
 }

@@ -38,7 +38,7 @@ public class EstacionamientoWS {
 		        
 		SitioParqueoEntidad sitioParqueo =
 				servicioEstacionamiento.registrarIngresoVehiculo(vehiculo);
-						
+		
 		return Response.ok(sitioParqueo).build();
 	} 
 	
