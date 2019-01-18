@@ -50,9 +50,7 @@ public class EstacionamientoWS {
 	@Produces(value = "application/json")
 	@Path(value = "registrarsalida")
 	public Response registrarSalida(Vehiculo vehiculo){
-		
-		
-        
+		       
 		int precioAPagar =
 				servicioEstacionamiento.registrarSalidaVehiculo(vehiculo);
 		

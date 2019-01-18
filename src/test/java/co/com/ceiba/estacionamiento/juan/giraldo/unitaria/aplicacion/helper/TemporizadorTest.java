@@ -14,7 +14,7 @@ import java.util.Date;
 public class TemporizadorTest {
 
 	private final int DIAS = 1;
-	private final int HORAS = 3;
+	private final int HORAS = 4;
 	
 	@Test
 	public void testCalcularTiempoEstadia() {
@@ -56,15 +56,17 @@ public class TemporizadorTest {
 	}
 	
 	@Test
-	public void testCalcularTiempoEstadiaCeroHoras() {
+	public void testCalcularTiempoEstadiaUnaHoras() {
 		
 		int contDias = 0;
-		int contHoras = 0;
+		int contHoras = 1;
+		int horasEstadia = 1;
 		
 		//Arrange
 		Date fechaInicio = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(fechaInicio);
+		calendar.add(Calendar.HOUR_OF_DAY, - horasEstadia);
 		fechaInicio = calendar.getTime();
 		
 		//Act

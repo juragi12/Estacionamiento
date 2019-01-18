@@ -6,7 +6,7 @@ import java.util.Date;
 public class Temporizador {
 	
 	public static final int HORAS_DIA = 24 ;
-	public static final int TIEMPO_EN_HORAS = (1000 * 60 * 60) ;
+	public static final double TIEMPO_EN_HORAS = (1000 * 60 * 60) ;
 	public static final int HORAS_DIA_PARQUEO = 9 ;
 	
 	public static TiempoEstadia calcularTiempoEstadia(Date fechaInicio) {
@@ -17,7 +17,7 @@ public class Temporizador {
 		Date fechaFin = new Date();
 	
 		double diferenciaEnMiles = ( fechaFin.getTime() - fechaInicio.getTime() );
-		long difEnHoras = (long) (   diferenciaEnMiles / ((double) TIEMPO_EN_HORAS)  ) ;
+		long difEnHoras = (long) Math.ceil( diferenciaEnMiles / TIEMPO_EN_HORAS  ) ;
 		
 		long dias = difEnHoras/HORAS_DIA;
 		long horasRestantes = difEnHoras - dias*HORAS_DIA;

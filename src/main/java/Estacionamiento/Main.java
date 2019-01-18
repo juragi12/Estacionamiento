@@ -149,26 +149,26 @@ public class Main {
 		
 		*/
 		
-		// ## INGRESO DE VEHICULO usando el servicio ###
-		Vehiculo moto1 = new Moto();
-		moto1.setPlaca("BAA-001");
-        moto1.setTipo("MOTO");
-        moto1.setCilindraje(250);
-        
-		Vehiculo moto2 = new Moto();
-		moto2.setPlaca("BBA-002");
-		moto2.setTipo("MOTO");
-		moto2.setCilindraje(250);
-		
-		Vehiculo moto3 = new Moto();
-		moto3.setPlaca("BBA-003");
-		moto3.setTipo("MOTO");
-		moto3.setCilindraje(250);
-        
-		Vehiculo moto4 = new Moto();
-		moto4.setPlaca("BBA-003");
-		moto4.setTipo("MOTO");
-		moto4.setCilindraje(250);
+//		// ## INGRESO DE VEHICULO usando el servicio ###
+//		Vehiculo moto1 = new Moto();
+//		moto1.setPlaca("BAA-001");
+//        moto1.setTipo("MOTO");
+//        moto1.setCilindraje(250);
+//        
+//		Vehiculo moto2 = new Moto();
+//		moto2.setPlaca("BBA-002");
+//		moto2.setTipo("MOTO");
+//		moto2.setCilindraje(250);
+//		
+//		Vehiculo moto3 = new Moto();
+//		moto3.setPlaca("BBA-003");
+//		moto3.setTipo("MOTO");
+//		moto3.setCilindraje(250);
+//        
+//		Vehiculo moto4 = new Moto();
+//		moto4.setPlaca("BBA-003");
+//		moto4.setTipo("MOTO");
+//		moto4.setCilindraje(250);
 		
 //        ServicioEstacionamientoImpl srv = new ServicioEstacionamientoImpl();
 //        
@@ -196,19 +196,20 @@ public class Main {
 //		}
 //		
 
-		EstacionamientoWS e = new EstacionamientoWS();
-		e.registrarIngreso(moto2);
-		e.registrarIngreso(moto1);
-		e.registrarIngreso(moto3);
-		System.out.println("#################");
+//		EstacionamientoWS e = new EstacionamientoWS();
+//		e.registrarIngreso(moto2);
+//		e.registrarIngreso(moto1);
+//		e.registrarIngreso(moto3);
+//		System.out.println("#################");
+//		
+//		e.consultarParqueadero();
+//		e.registrarSalida(moto1);
+//		e.registrarSalida(moto2);
+//		e.registrarSalida(moto4);
+//		
+//		System.out.println("#################");
+//		e.consultarParqueadero();
 		
-		e.consultarParqueadero();
-		e.registrarSalida(moto1);
-		e.registrarSalida(moto2);
-		e.registrarSalida(moto4);
-		
-		System.out.println("#################");
-		e.consultarParqueadero();
 	}
 
 }

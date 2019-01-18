@@ -37,7 +37,7 @@ public class AdminEstacionamiento {
 	public SitioParqueoEntidad parquearVehiculo(VehiculoEntidad vehiculoEnt) {
 
 		SitioParqueoEntidad sitioParqueoEntidad = null;	
-		
+
 		if ( estaParqueado(vehiculoEnt) ) {
 			System.out.println(" Vehiculo ya parqueado");
 			
@@ -45,12 +45,6 @@ public class AdminEstacionamiento {
 					+ vehiculoEnt.getPlaca() 
 					+ "está activo en el parqueadero");
 		}
-		
-		System.out.println("#######################################################################################################################");
-		
-		System.out.println("Contador de Carros: "+ contadorCarros);
-		
-		System.out.println("Contador de Motos: "+contadorMotos);
 		
 		if ( vehiculoEnt.getTipo().equals(MOTO) ) {
 			
@@ -69,6 +63,7 @@ public class AdminEstacionamiento {
 					new SitioParqueoEntidad(true, new Date(), null,
 							contadorCarros , vehiculoEnt);
 		}
+		
 		parqueadero.add(sitioParqueoEntidad);
 				
 		return sitioParqueoEntidad;
@@ -81,7 +76,7 @@ public class AdminEstacionamiento {
 		
 		while (i.hasNext()) {
 			SitioParqueoEntidad st = i.next();			
-			if ( st.getPosicion() == sitioParqueoEntidad.getPosicion() ) {
+			if ( st.getVehiculo().getPlaca() == sitioParqueoEntidad.getVehiculo().getPlaca() ) {
 				i.remove();
 				sitioParqueoLiberado = true;
 			}
