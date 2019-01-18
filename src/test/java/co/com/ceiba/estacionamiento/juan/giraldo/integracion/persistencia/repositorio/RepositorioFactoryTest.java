@@ -1,9 +1,12 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.integracion.persistencia.repositorio;
-//package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio;
+//package co.com.ceiba.estacionamiento.juan.giraldo.integracion.persistencia.repositorio;
 //
 //import static org.junit.Assert.*;
 //
 //import org.junit.Test;
+//
+//import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioFactory;
+//import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioSitioParqueoImpl;
+//import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioVehiculoImpl;
 //
 //public class RepositorioFactoryTest {
 //
