@@ -1,6 +1,7 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.integracion.servicio;
 
 import static org.junit.Assert.*;
+
 import javax.ws.rs.core.Response;
 
 import org.junit.Test;
@@ -15,8 +16,7 @@ import databuilder.VehiculoDataBuilder;
 
 public class EstacionamientoWSTest {
 
-	private final int PRECIO_A_PAGAR = 0;
-	
+	private final int PRECIO_A_PAGAR = 0;	
 
 	ServicioEstacionamientoImpl servicioEstacionamiento;
 	EstacionamientoWS estacionamientoWS = new EstacionamientoWS();
@@ -40,6 +40,7 @@ public class EstacionamientoWSTest {
 		
 		// Act
 		Response response = estacionamientoWS.registrarIngreso(vehiculoPreuba);
+		estacionamientoWS.registrarSalida(vehiculoPreuba);
 		
 		// Assert
 		assertTrue( assertResponse (response, responseActual) );
@@ -79,6 +80,7 @@ public class EstacionamientoWSTest {
 		
 		// Act
 		Response response = estacionamientoWS.consultarParqueadero();
+		estacionamientoWS.registrarSalida(vehiculo);
 
 		
 		// Assert
@@ -87,7 +89,7 @@ public class EstacionamientoWSTest {
 	}
 
 	public boolean assertResponse(Response response, Response responseActual ) {
-		
+			
 		if (  response.getStatus() != responseActual.getStatus()  ) {
 			return false;
 		}

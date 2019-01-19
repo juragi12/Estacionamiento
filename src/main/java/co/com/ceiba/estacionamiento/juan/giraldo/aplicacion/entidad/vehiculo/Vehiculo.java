@@ -7,7 +7,7 @@ public class Vehiculo {
 	private String tipo;
 
 	public Vehiculo(String placa, int cilindraje, String tipo) {
-		this.placa = placa;
+		this.placa = placa.toUpperCase();
 		this.cilindraje = cilindraje;
 		this.tipo = tipo;
 	}

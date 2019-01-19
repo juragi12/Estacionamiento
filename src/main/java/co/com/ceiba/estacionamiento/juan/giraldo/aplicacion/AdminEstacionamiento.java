@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
@@ -39,16 +40,15 @@ public class AdminEstacionamiento {
 		SitioParqueoEntidad sitioParqueoEntidad = null;	
 
 		if ( estaParqueado(vehiculoEnt) ) {
-			System.out.println(" Vehiculo ya parqueado");
 			
-			throw new IllegalArgumentException("El vehiculo con placa: "
-					+ vehiculoEnt.getPlaca() 
-					+ "está activo en el parqueadero");
+			throw EstacionamientoExcepcion.VEHICULO_PARQUEADO.toException();
 		}
 		
 		if ( vehiculoEnt.getTipo().equals(MOTO) ) {
 			
-			if ( contadorMotos > SITIOS_MOTO ) return null;
+			if ( contadorMotos >= SITIOS_MOTO ) 
+				throw EstacionamientoExcepcion.PARQUEADERO_MOTOS_COMPLETO.toException();
+			
 			contadorMotos++;	
 			sitioParqueoEntidad = 
 					new SitioParqueoEntidad(true, new Date(), null,
@@ -57,7 +57,9 @@ public class AdminEstacionamiento {
 		
 		if ( vehiculoEnt.getTipo().equals(CARRO) ) {
 			
-			if ( contadorCarros > SITIOS_CARRO ) return null;
+			if ( contadorCarros >= SITIOS_CARRO ) 
+				throw EstacionamientoExcepcion.PARQUEADERO_CARROS_COMPLETO.toException();
+			
 			contadorCarros++;	
 			sitioParqueoEntidad = 
 					new SitioParqueoEntidad(true, new Date(), null,

@@ -14,7 +14,7 @@ public class ValidadorIngresoDias implements ValidadorIngresoVehiculo {
 	public Boolean validarIngreso(Vehiculo vehiculo) {
 		
 		// Si primera letra de placa NO es A permite Ingreso
-		String placa = vehiculo.getPlaca();
+		String placa = vehiculo.getPlaca().toUpperCase();
 		char letraPlaca = placa.charAt(POSICION_LETRA_RESTRICCION_PLACA);	
 		if ( letraPlaca != RESTRICCION_PLACA ) return true;
 		

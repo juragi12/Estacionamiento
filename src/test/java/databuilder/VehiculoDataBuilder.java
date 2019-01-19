@@ -34,6 +34,18 @@ public class VehiculoDataBuilder {
 		return this;
 	}
 	
+	public String getPlaca() {
+		return placa;
+	}
+
+	public int getCilindraje() {
+		return cilindraje;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+	
 	public Vehiculo buildVehiculo() {
 		
 		EntidadFactory vehiculoFactory = CrearEntidadFactory.getFactory("VEHICULO");
@@ -49,6 +61,20 @@ public class VehiculoDataBuilder {
 	public VehiculoEntidad buildVehiculoEntidad() {
 				
 		return new VehiculoEntidad(this.placa, this.cilindraje, this.tipo);
+	}
+	
+	public boolean compararVehiculos(VehiculoEntidad vehiculoActual) {
+		
+		if (! this.getPlaca().equalsIgnoreCase(
+				vehiculoActual.getPlaca())) return false;
+		
+		if (this.getCilindraje() != 
+				vehiculoActual.getCilindraje()) return false;
+				
+		if (! this.getTipo().equalsIgnoreCase(
+				vehiculoActual.getTipo()) ) return false;
+				
+		return true;
 	}
 
 }

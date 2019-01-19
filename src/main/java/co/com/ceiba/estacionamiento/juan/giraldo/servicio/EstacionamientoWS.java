@@ -35,11 +35,18 @@ public class EstacionamientoWS {
 	@Produces(value = "application/json")
 	@Path(value = "registraringreso")
 	public Response registrarIngreso(Vehiculo vehiculo){
-		        
-		SitioParqueoEntidad sitioParqueo =
-				servicioEstacionamiento.registrarIngresoVehiculo(vehiculo);
-		
-		return Response.ok(sitioParqueo).build();
+
+		try {
+			SitioParqueoEntidad sitioParqueo =
+					servicioEstacionamiento.registrarIngresoVehiculo(vehiculo);
+			
+			return Response.ok(sitioParqueo).build();
+			
+		} catch (Exception e) {
+					
+			return Response.status(400).entity(e.getMessage()).build();
+		}
+
 	} 
 	
 	/*

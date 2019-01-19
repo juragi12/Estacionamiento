@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.Temporizador;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ReglaEstacionamiento;
@@ -16,8 +17,6 @@ import co.com.ceiba.estacionamiento.juan.giraldo.servicio.ServicioEstacionamient
 
 public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 
-	public static final String INGRESO_NO_AUTORIZADO = "No está autorizado para ingresar";
-
 	/*
 	 * Registra en el estacionamiento el ingreso de un vehiculo
 	 */
@@ -27,7 +26,7 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 		boolean parquear = ReglaEstacionamiento.validarIngreso(vehiculo);
 
 		if (!parquear) {
-			throw new IllegalArgumentException(INGRESO_NO_AUTORIZADO);
+			throw EstacionamientoExcepcion.INGRESO_NO_AUTORIZADO.toException();
 		}
 
 		RepositorioVehiculoImpl repositorioVeiculo = RepositorioFactory.obtenerRepositorioVehiculo();
@@ -37,9 +36,7 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 		SitioParqueoEntidad sitParEnt = adminEstacionamiento.parquearVehiculo(vehiculoEnt);
 
 		RepositorioSitioParqueoImpl repositorioSitioParqueo = RepositorioFactory.obtenerRepositorioSitioParqueo();
-		SitioParqueoEntidad sitParEntRep = repositorioSitioParqueo.parquearVehiculo(sitParEnt);
-
-		return sitParEntRep;
+		return repositorioSitioParqueo.parquearVehiculo(sitParEnt);
 	}
 
 	/*
@@ -59,9 +56,8 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 		adminEstacionamiento.removerSitioParqueo(sitParEntRet);
 
 		TiempoEstadia tiempoEstadia = Temporizador.calcularTiempoEstadia(sitParEntidad.getFechaInicio());
-		int precioAPagar = ReglaEstacionamiento.calcularPrecioParqueo(vehiculo, tiempoEstadia);
+		return ReglaEstacionamiento.calcularPrecioParqueo(vehiculo, tiempoEstadia);
 
-		return precioAPagar;
 	}
 
 	/*

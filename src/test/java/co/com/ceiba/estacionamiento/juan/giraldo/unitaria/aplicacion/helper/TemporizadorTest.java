@@ -13,25 +13,29 @@ import java.util.Date;
 
 public class TemporizadorTest {
 
-	private final int DIAS = 1;
-	private final int HORAS = 4;
+
 	
 	@Test
 	public void testCalcularTiempoEstadia() {
+		
+		int dias = 1;
+		int horas = 4;
+		int minutosEstadia = 1;
 		
 		//Arrange
 		Date fechaInicio = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(fechaInicio);
-		calendar.add(Calendar.DAY_OF_MONTH, - DIAS);
-		calendar.add(Calendar.HOUR_OF_DAY, - HORAS);
+		calendar.add(Calendar.DAY_OF_MONTH, - dias);
+		calendar.add(Calendar.HOUR_OF_DAY, - horas);
+		calendar.add(Calendar.MINUTE, + minutosEstadia);
 		fechaInicio = calendar.getTime();
 		
 		//Act
 		TiempoEstadia t = Temporizador.calcularTiempoEstadia(fechaInicio);   
 		
 		//Assert
-		assertTrue(t.getDias() == DIAS && t.getHoras() == HORAS);
+		assertTrue(t.getDias() == dias && t.getHoras() == horas);
 	}
 
 	@Test
