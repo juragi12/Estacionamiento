@@ -56,17 +56,19 @@ public class TemporizadorTest {
 	}
 	
 	@Test
-	public void testCalcularTiempoEstadiaUnaHoras() {
+	public void testCalcularTiempoEstadiaUnaHorasCuandoEstaMenosDeHora() {
 		
 		int contDias = 0;
 		int contHoras = 1;
 		int horasEstadia = 1;
+		int minutosEstadia = 1;
 		
 		//Arrange
 		Date fechaInicio = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(fechaInicio);
 		calendar.add(Calendar.HOUR_OF_DAY, - horasEstadia);
+		calendar.add(Calendar.MINUTE, + minutosEstadia);
 		fechaInicio = calendar.getTime();
 		
 		//Act

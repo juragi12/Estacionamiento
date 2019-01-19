@@ -24,11 +24,13 @@ public class EstacionamientoWSTest {
 	@Test
 	public void testRegistrarIngreso() {
 
+		String placa = "DDD-321";
 		// Arrange
 		VehiculoDataBuilder vehiculoDataBuilder = new VehiculoDataBuilder();
 		
-		Vehiculo vehiculo = vehiculoDataBuilder.setPlaca("DDD-321").buildVehiculo();
-		VehiculoEntidad vehiculoEnt = vehiculoDataBuilder.setPlaca("DDD-321").buildVehiculoEntidad();
+		Vehiculo vehiculoPreuba = vehiculoDataBuilder.setPlaca(placa).buildVehiculo();
+		
+		VehiculoEntidad vehiculoEnt = vehiculoDataBuilder.setPlaca(placa).buildVehiculoEntidad();
 		
 		SitioParqueoEntidad sitioParqueoEntidad = new SitioParqueoDataBuilder()
 				.setVehiculoEntidad(vehiculoEnt)
@@ -37,18 +39,19 @@ public class EstacionamientoWSTest {
 		Response responseActual = Response.ok(sitioParqueoEntidad).build();
 		
 		// Act
-		Response response = estacionamientoWS.registrarIngreso(vehiculo);
+		Response response = estacionamientoWS.registrarIngreso(vehiculoPreuba);
 		
 		// Assert
 		assertTrue( assertResponse (response, responseActual) );
 	}
 
-	//@Test
+	@Test
 	public void testRegistrarSalida() {
 		
+		String placa = "DDD-322";
 		// Arrange		
 		//Ingresa vehiculo
-		Vehiculo vehiculo = new VehiculoDataBuilder().buildVehiculo();
+		Vehiculo vehiculo = new VehiculoDataBuilder().setPlaca(placa).buildVehiculo();
 		estacionamientoWS.registrarIngreso(vehiculo);		
 		//Salida vehiculo
 		Response responseActual = Response.ok(PRECIO_A_PAGAR).build();
@@ -62,16 +65,15 @@ public class EstacionamientoWSTest {
 		
 	}
 
-	//@Test
+	@Test
 	public void testConsultarParqueadero() {
 		
+		String placa = "DDD-323";
 		// Arrange		
 		//Ingresa vehiculo
-		Vehiculo vehiculo = new VehiculoDataBuilder().buildVehiculo();
+		Vehiculo vehiculo = new VehiculoDataBuilder().setPlaca(placa).buildVehiculo();
 		estacionamientoWS.registrarIngreso(vehiculo);	
-		EstacionamientoWS estacionamientoWS = new EstacionamientoWS();
-		estacionamientoWS.registrarIngreso(vehiculo);
-		estacionamientoWS.registrarIngreso(vehiculo);
+
 		//Consulta parqueadero
 		Response responseActual = estacionamientoWS.consultarParqueadero();
 		

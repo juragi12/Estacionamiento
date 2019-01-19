@@ -5,8 +5,9 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="estacionamiento" transaction-type="RESOURCE_LOCAL">
 
-        <class>persistencia.VehiculoEntidad</class>
-        <class>persistencia.SitioParqueoEntidad</class>
+        <class>co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad</class>
+        <class>co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad</class>
+
 
         <properties>
         	<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
