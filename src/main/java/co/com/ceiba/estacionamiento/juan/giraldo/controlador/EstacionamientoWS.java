@@ -7,10 +7,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.excepcion.EstacionamientoException;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 
 @Path(value = "/estacionamiento")
@@ -35,7 +35,7 @@ public class EstacionamientoWS {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(value = "application/json")
 	@Path(value = "registraringreso")
-	public Response registrarIngreso(Vehiculo vehiculo){
+	public Response registrarIngreso(Vehiculo vehiculo) throws EstacionamientoException {
 
 		try {
 			SitioParqueoEntidad sitioParqueo =
@@ -44,7 +44,8 @@ public class EstacionamientoWS {
 			return Response.ok(sitioParqueo).build();
 			
 		} catch (RuntimeException e) {
-			return Response.status(Status.BAD_REQUEST).entity(e.getMessage()).build();
+			
+			throw new EstacionamientoException(e.getMessage());
 		}
 	} 
 	

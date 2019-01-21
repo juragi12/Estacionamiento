@@ -9,6 +9,7 @@ import org.junit.Test;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.controlador.EstacionamientoWS;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.excepcion.EstacionamientoException;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 import databuilder.SitioParqueoDataBuilder;
@@ -22,7 +23,7 @@ public class EstacionamientoWSTest {
 	EstacionamientoWS estacionamientoWS = new EstacionamientoWS();
 
 	@Test
-	public void testRegistrarIngreso() {
+	public void testRegistrarIngreso() throws EstacionamientoException {
 
 		String placa = "DDD-321";
 		// Arrange
@@ -47,7 +48,7 @@ public class EstacionamientoWSTest {
 	}
 
 	@Test
-	public void testRegistrarSalida() {
+	public void testRegistrarSalida() throws EstacionamientoException {
 		
 		String placa = "DDD-322";
 		// Arrange		
@@ -67,7 +68,7 @@ public class EstacionamientoWSTest {
 	}
 
 	@Test
-	public void testConsultarParqueadero() {
+	public void testConsultarParqueadero() throws EstacionamientoException {
 		
 		String placa = "DDD-323";
 		// Arrange		
