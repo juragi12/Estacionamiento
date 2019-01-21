@@ -75,7 +75,7 @@ public class AdminEstacionamiento {
 		
 		while (i.hasNext()) {
 			SitioParqueoEntidad st = i.next();			
-			if ( st.getVehiculo().getPlaca() == sitioParqueoEntidad.getVehiculo().getPlaca() ) {
+			if ( st.getVehiculo().getPlaca().equalsIgnoreCase( sitioParqueoEntidad.getVehiculo().getPlaca() ) ) {
 				i.remove();
 				sitioParqueoLiberado = true;
 			}

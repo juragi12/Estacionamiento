@@ -14,8 +14,8 @@ public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 
 	private EntityManager entityManager;
 	
-	public final static String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA_VEHICULO = "SitioParqueo.findByPlacaVehiculo";
-	public final static String PLACA = "placa";
+	public static final String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA_VEHICULO = "SitioParqueo.findByPlacaVehiculo";
+	public static final String PLACA = "placa";
 
 	public RepositorioSitioParqueoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;
@@ -47,10 +47,8 @@ public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 			while (iterator.hasNext()) {
 				sp = (SitioParqueoEntidad) iterator.next();
 				
-				if ( sp.isActivo() ) {
-					if ( sp.getVehiculo().getPlaca().equalsIgnoreCase(vehiculo.getPlaca()) ) {
-						return sp;
-					}
+				if ( sp.isActivo() && sp.getVehiculo().getPlaca().equalsIgnoreCase(vehiculo.getPlaca()) ) {
+					return sp;
 				}
 			}
 		}		

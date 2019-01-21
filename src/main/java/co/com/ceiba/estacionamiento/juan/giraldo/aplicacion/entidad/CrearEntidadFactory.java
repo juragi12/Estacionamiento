@@ -1,6 +1,7 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.VehiculoFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 
 public final class CrearEntidadFactory {
 
@@ -14,7 +15,6 @@ public final class CrearEntidadFactory {
 			return new VehiculoFactory(); 
 		}
 		
-		throw new IllegalArgumentException("No se especifico un tipo de fabrica correcto");
-		
+		throw EstacionamientoExcepcion.TIPO_FABRICA_NO_DEFINIDO.toException();		
 	}
 }

@@ -7,8 +7,9 @@ public enum EstacionamientoExcepcion {
 	PARQUEADERO_MOTOS_COMPLETO("Estacionamiento de Motos lleno"),
 	PARQUEADERO_CARROS_COMPLETO("Estacionamiento de Carros lleno"),
 
+	TIPO_FABRICA_NO_DEFINIDO("Se especifico un tipo de fabrica no definido"),
 	TIPO_VEHICULO_NO_DEFINIDO("Se especifico un tipo de vehiculo no definido"),
-	CALCULADOR_PRECIO_NO_DEFINIDO("Se especifico un tipo de calculador de precio no definido");;
+	CALCULADOR_PRECIO_NO_DEFINIDO("Se especifico un tipo de calculador de precio no definido");
 	
 	private final String mensaje;
 

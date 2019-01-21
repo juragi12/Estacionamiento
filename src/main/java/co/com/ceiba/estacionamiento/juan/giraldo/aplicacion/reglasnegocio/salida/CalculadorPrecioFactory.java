@@ -3,7 +3,7 @@ package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salid
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 
-public class CalculadorPrecioFactory {
+public final class CalculadorPrecioFactory {
 	
 	public static final String TIPO_VEHICULO_MOTO = "MOTO" ;
 	public static final String TIPO_VEHICULO_CARRO = "CARRO" ;

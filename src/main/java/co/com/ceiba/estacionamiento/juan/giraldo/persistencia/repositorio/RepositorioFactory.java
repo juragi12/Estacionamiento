@@ -3,7 +3,7 @@ package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-public class RepositorioFactory {
+public final class RepositorioFactory {
 	
 	private RepositorioFactory() {}
 

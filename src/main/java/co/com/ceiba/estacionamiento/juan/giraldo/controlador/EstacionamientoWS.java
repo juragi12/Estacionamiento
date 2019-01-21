@@ -42,11 +42,9 @@ public class EstacionamientoWS {
 			
 			return Response.ok(sitioParqueo).build();
 			
-		} catch (Exception e) {
-					
+		} catch (RuntimeException e) {
 			return Response.status(400).entity(e.getMessage()).build();
 		}
-
 	} 
 	
 	/*
