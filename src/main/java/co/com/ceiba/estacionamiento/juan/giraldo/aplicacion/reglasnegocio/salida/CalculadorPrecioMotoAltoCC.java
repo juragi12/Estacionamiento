@@ -4,28 +4,28 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia
 
 public class CalculadorPrecioMotoAltoCC implements CalculadorPrecioParqueo {
 
-	private final int precioHora = 500 ;
-	private final int precioDia = 4000 ;
-	private final int recargo = 2000 ;
+	private static final int PRECIO_HORA = 500 ;
+	private static final int PRECIO_DIA = 4000 ;
+	private static final int RECARGO = 2000 ;
 	
 	public int getPrecioHora() {
-		return precioHora;
+		return PRECIO_HORA;
 	}
 
 	public int getPrecioDia() {
-		return precioDia;
+		return PRECIO_DIA;
 	}
 
 	public int getRecargo() {
-		return recargo;
+		return RECARGO;
 	}
 	
 	@Override
 	public int calcularPrecioAPagar(TiempoEstadia tiempoEstadia) {
 
-		return precioDia*tiempoEstadia.getDias() + 
-				precioHora*tiempoEstadia.getHoras() + 
-				recargo;
+		return PRECIO_DIA*tiempoEstadia.getDias() + 
+				PRECIO_HORA*tiempoEstadia.getHoras() + 
+				RECARGO;
 	}
 
 }

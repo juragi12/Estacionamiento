@@ -14,8 +14,8 @@ public class RepositorioSitioParqueoImpl implements RepositorioSitioParqueo {
 
 	private EntityManager entityManager;
 	
-	public final String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA_VEHICULO = "SitioParqueo.findByPlacaVehiculo";
-	public final String PLACA = "placa";
+	public final static String QUERY_BUSCAR_SITIO_PARQUEO_X_PLACA_VEHICULO = "SitioParqueo.findByPlacaVehiculo";
+	public final static String PLACA = "placa";
 
 	public RepositorioSitioParqueoImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;

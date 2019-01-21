@@ -1,12 +1,15 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 
 public class CalculadorPrecioFactory {
 	
 	public static final String TIPO_VEHICULO_MOTO = "MOTO" ;
 	public static final String TIPO_VEHICULO_CARRO = "CARRO" ;
 	public static final int UMBRAL_CC = 500 ;
+	
+	private CalculadorPrecioFactory() {}
 	
 	/*
 	 * Retorna el tipo de calculador según el tipo de vehiculo y su cc
@@ -27,7 +30,7 @@ public class CalculadorPrecioFactory {
 				return new CalculadorPrecioMotoBajoCC();
 		}
 		
-		throw new IllegalArgumentException("No se especifico un tipo de calculador correcto");
+		throw EstacionamientoExcepcion.CALCULADOR_PRECIO_NO_DEFINIDO.toException();
 	}
 
 }

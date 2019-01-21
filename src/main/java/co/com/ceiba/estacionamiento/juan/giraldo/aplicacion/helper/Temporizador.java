@@ -9,6 +9,8 @@ public final class Temporizador {
 	public static final double TIEMPO_EN_HORAS = (1000 * 60 * 60) ;
 	public static final int HORAS_DIA_PARQUEO = 9 ;
 	
+	private Temporizador() {}
+	
 	public static TiempoEstadia calcularTiempoEstadia(Date fechaInicio) {
 		
 		Calendar calendar = Calendar.getInstance();
