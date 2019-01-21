@@ -20,5 +20,5 @@ public interface ServicioEstacionamiento {
 	/*
 	 * Devuelve la lista de vehiculos estacionados
 	 */
-	List<SitioParqueoEntidad> consultarVehiculos();
+	List<Object> consultarVehiculos();
 }

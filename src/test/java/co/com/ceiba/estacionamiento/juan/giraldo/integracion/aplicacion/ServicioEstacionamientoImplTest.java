@@ -136,7 +136,7 @@ public class ServicioEstacionamientoImplTest {
 		// Almacena num maximo de Carros
 		this.registrarIngresoVehiculos(NUM_MAX_CARROS, TIPO_CARRO);
 		
-		List<SitioParqueoEntidad> parqueadero = 
+		List<Object> parqueadero = 
 				servicioEstacionamiento.consultarVehiculos();
 		numCarrosParqueados = parqueadero.size();
 		// Registra salida de Carros

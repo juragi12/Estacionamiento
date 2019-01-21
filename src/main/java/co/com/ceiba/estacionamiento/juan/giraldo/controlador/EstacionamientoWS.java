@@ -69,7 +69,7 @@ public class EstacionamientoWS {
 	@Produces(value = "application/json")
 	@Path(value = "consultar")
 	public Response consultarParqueadero() {
-		
+				
 		return Response.ok(servicioEstacionamiento.consultarVehiculos()).build();	 
 		
 	}	

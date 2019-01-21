@@ -1,7 +1,11 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
@@ -64,8 +68,19 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 	 * Devuelve la lista de vehiculos estacionados
 	 */
 	@Override
-	public List<SitioParqueoEntidad> consultarVehiculos() {
-		return AdminEstacionamiento.getParqueadero();
+	public List<Object> consultarVehiculos() {
+		
+		Format formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		return AdminEstacionamiento.getParqueadero().stream().map(
+				 temp -> {HashMap<String, String> lista = new HashMap<String, String>(); 
+				 lista.put( "placa", temp.getVehiculo().getPlaca() );
+				 lista.put( "tipo", temp.getVehiculo().getTipo() );
+				 lista.put( "fechaInicio", formato.format( temp.getFechaInicio() ) );
+
+				 return lista;
+				 }
+				).collect(Collectors.toList());
 	}
 
 }
