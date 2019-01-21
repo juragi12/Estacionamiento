@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoDias;
 import databuilder.VehiculoDataBuilder;
 
@@ -29,28 +31,67 @@ public class ValidadorIngresoDiasTest {
 		assertTrue( ingresoValido );
 
 	}
-	
+		
 	@Test
-	public void testValidaIngresoVehiculoRestringido() {
+	public void testValidaIngresoVehiculoRestringidoDiaViernesNOIngresa() {
 
 		// Arrange
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2019,0,18); // Enero 18/2019
+		
+		boolean ingresoValidoActual;
 		ValidadorIngresoDias validadorIngresoDias = new ValidadorIngresoDias();		
 		Vehiculo vehiculo = new VehiculoDataBuilder().setPlaca(placaRestringida).buildVehiculo();
 		
-		Date fechaActual = new Date();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(fechaActual);
-		boolean ingresoValido = false;
-		
-		// Si es domingo o lunes permite Ingreso 
-		if ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY ) ingresoValido = true;		
-		if ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY ) ingresoValido = true;
-		
-		// Act
-		boolean ingresoValidoActual = validadorIngresoDias.validarIngreso(vehiculo);
+		validadorIngresoDias.setFechaActual(calendar.getTime());
+	
+		// Act		
+		ingresoValidoActual = validadorIngresoDias.validarIngreso(vehiculo);
 
 		// Assert
-		assertTrue( ingresoValido == ingresoValidoActual );
+		assertFalse( ingresoValidoActual );	
+
+	}
+	
+	@Test
+	public void testValidaIngresoVehiculoRestringidoDiaLunesIngresa() {
+
+		// Arrange
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2019,0,21);
+		
+		boolean ingresoValidoActual;
+		ValidadorIngresoDias validadorIngresoDias = new ValidadorIngresoDias();		
+		Vehiculo vehiculo = new VehiculoDataBuilder().setPlaca(placaRestringida).buildVehiculo();
+		
+		validadorIngresoDias.setFechaActual(calendar.getTime());
+	
+		// Act		
+		ingresoValidoActual = validadorIngresoDias.validarIngreso(vehiculo);
+
+		// Assert
+		assertTrue( ingresoValidoActual );	
+
+	}
+	
+	@Test
+	public void testValidaIngresoVehiculoRestringidoDiaDomingoIngresa() {
+
+		// Arrange
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2019,0,20);
+		
+		boolean ingresoValidoActual;
+		ValidadorIngresoDias validadorIngresoDias = new ValidadorIngresoDias();		
+		Vehiculo vehiculo = new VehiculoDataBuilder().setPlaca(placaRestringida).buildVehiculo();
+		
+		validadorIngresoDias.setFechaActual(calendar.getTime());
+	
+		// Act		
+		ingresoValidoActual = validadorIngresoDias.validarIngreso(vehiculo);
+
+		// Assert
+		assertTrue( ingresoValidoActual );	
 
 	}
 

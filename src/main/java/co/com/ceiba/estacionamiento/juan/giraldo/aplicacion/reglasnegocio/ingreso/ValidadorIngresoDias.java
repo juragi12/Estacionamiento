@@ -10,6 +10,21 @@ public class ValidadorIngresoDias implements ValidadorIngresoVehiculo {
 	public static final char RESTRICCION_PLACA = 'A' ;
 	public static final int POSICION_LETRA_RESTRICCION_PLACA = 0 ;	
 	
+	private Date fechaActual;
+	private Calendar calendar;
+	
+	public ValidadorIngresoDias() {
+		fechaActual = new Date();
+		calendar = Calendar.getInstance();
+		calendar.setTime(fechaActual);
+	}
+	
+	public void setFechaActual(Date fechaActual) {
+		this.fechaActual = fechaActual;
+		calendar = Calendar.getInstance();
+		calendar.setTime(fechaActual);
+	}
+	
 	@Override
 	public Boolean validarIngreso(Vehiculo vehiculo) {
 		
@@ -19,10 +34,6 @@ public class ValidadorIngresoDias implements ValidadorIngresoVehiculo {
 		if ( letraPlaca != RESTRICCION_PLACA ) {		
 			return true;
 		}
-		
-		Date fechaActual = new Date();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(fechaActual);
 		
 		// Si es domingo o lunes permite Ingreso 
 		if ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY ) {

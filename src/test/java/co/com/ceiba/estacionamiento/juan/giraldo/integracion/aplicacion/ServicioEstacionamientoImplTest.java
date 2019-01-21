@@ -131,7 +131,7 @@ public class ServicioEstacionamientoImplTest {
 	@Test
 	public void consultarVehiculosParqueado() {
 
-		int numCarrosParqueadosEsp = 20;
+		int numCarrosParqueadosEsp = NUM_MAX_CARROS;
 		int numCarrosParqueados = 0;
 		// Almacena num maximo de Carros
 		this.registrarIngresoVehiculos(NUM_MAX_CARROS, TIPO_CARRO);
@@ -149,15 +149,17 @@ public class ServicioEstacionamientoImplTest {
 	public void registrarIngresoVehiculos(int cantidad, String tipo) {
 		
 		String placa = "";
+		String placa_tipo_moto = "BD-";
+	    String placa_tipo_carro = "BDD-";
 		
 		VehiculoDataBuilder vehiculoDataBuilder = 
 				new VehiculoDataBuilder();
 		Vehiculo vehiculoPreuba;  
 		
 		if(tipo.contentEquals(TIPO_CARRO)) {
-			placa = "BDD-";	}
+			placa = placa_tipo_carro;	}
 		if(tipo.contentEquals(TIPO_MOTO)) {
-			placa = "BD-";	}
+			placa = placa_tipo_moto;	}
 		
 		for (int i = 0; i < cantidad; i++) {
 			placa = placa + String.valueOf(i);
@@ -173,15 +175,17 @@ public class ServicioEstacionamientoImplTest {
 	public void registrarSalidaVehiculos(int cantidad, String tipo) {
 		
 		String placa = "";
+		String placa_tipo_moto = "BD-";
+	    String placa_tipo_carro = "BDD-";
 		
 		VehiculoDataBuilder vehiculoDataBuilder = 
 				new VehiculoDataBuilder();
 		Vehiculo vehiculoPreuba;  
 		
 		if(tipo.contentEquals(TIPO_CARRO)) {
-			placa = "BDD-";	}
+			placa = placa_tipo_carro;	}
 		if(tipo.contentEquals(TIPO_MOTO)) {
-			placa = "BD-";	}
+			placa = placa_tipo_moto;	}
 		
 		for (int i = 0; i < cantidad; i++) {
 			placa = placa + String.valueOf(i);

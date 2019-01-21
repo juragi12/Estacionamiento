@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.integracion.servicio;
+package co.com.ceiba.estacionamiento.juan.giraldo.integracion.controlador;
 
 import static org.junit.Assert.*;
 
