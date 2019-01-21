@@ -23,8 +23,8 @@ public class CalculadorPrecioCarroTest {
 		calculadorPrecioCarro = new CalculadorPrecioCarro();
 		dias = 1;
 		horas = 1;
-		precio = calculadorPrecioCarro.PRECIO_DIA*dias + 
-				calculadorPrecioCarro.PRECIO_HORA*horas;			
+		precio = calculadorPrecioCarro.getPrecioDia()*dias + 
+				calculadorPrecioCarro.getPrecioHora()*horas;			
 	}
 
 	

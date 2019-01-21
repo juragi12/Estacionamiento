@@ -23,9 +23,9 @@ public class CalculadorPrecioMotoAltoCCTest {
 		calculadorPrecioMotoAltoCC = new CalculadorPrecioMotoAltoCC();
 		dias = 1;
 		horas = 1;
-		precio = calculadorPrecioMotoAltoCC.PRECIO_DIA*dias + 
-				calculadorPrecioMotoAltoCC.PRECIO_HORA*horas + 
-				calculadorPrecioMotoAltoCC.RECARGO;			
+		precio = calculadorPrecioMotoAltoCC.getPrecioDia()*dias + 
+				calculadorPrecioMotoAltoCC.getPrecioHora()*horas + 
+				calculadorPrecioMotoAltoCC.getRecargo();			
 	}
 
 	

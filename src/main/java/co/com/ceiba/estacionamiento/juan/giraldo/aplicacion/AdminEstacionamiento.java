@@ -13,15 +13,12 @@ public class AdminEstacionamiento {
 	
 	public static final String MOTO = "MOTO";
 	public static final String CARRO = "CARRO";
-	public static final int SITIOS_MOTO = 10;
-	public static final int SITIOS_CARRO = 20;
+	public static final int SITIOS_MOTO = 2; // 10
+	public static final int SITIOS_CARRO = 3; //20
 
-	private static List<SitioParqueoEntidad> parqueadero = new ArrayList<SitioParqueoEntidad>();
+	private static List<SitioParqueoEntidad> parqueadero = new ArrayList<>();
 	private static int contadorMotos = 0;
 	private static int contadorCarros = 0;
-
-	public AdminEstacionamiento() {
-	}
 
 	public int getContadorMotos() {
 		return contadorMotos;

@@ -16,9 +16,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.EstacionamientoWS;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.ServicioEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
-import co.com.ceiba.estacionamiento.juan.giraldo.servicio.EstacionamientoWS;
-import co.com.ceiba.estacionamiento.juan.giraldo.servicio.ServicioEstacionamiento;
 import databuilder.SitioParqueoDataBuilder;
 import databuilder.VehiculoDataBuilder;
 

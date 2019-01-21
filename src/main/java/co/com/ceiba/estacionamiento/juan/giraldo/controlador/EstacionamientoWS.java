@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.servicio;
+package co.com.ceiba.estacionamiento.juan.giraldo.controlador;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

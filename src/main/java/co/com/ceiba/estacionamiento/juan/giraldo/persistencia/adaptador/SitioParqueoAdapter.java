@@ -4,7 +4,9 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.SitioParqueo
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
-public class SitioParqueoAdapter {
+public final class SitioParqueoAdapter {
+	
+	private SitioParqueoAdapter() {}
 	
 	public static SitioParqueoEntidad getSitioParqueoEntidad(SitioParqueo sitioParqueo, 
 			VehiculoEntidad vehiculoEntidad) {

@@ -8,12 +8,12 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.Estacionam
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.Temporizador;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ReglaEstacionamiento;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.ServicioEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioFactory;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioSitioParqueoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioVehiculoImpl;
-import co.com.ceiba.estacionamiento.juan.giraldo.servicio.ServicioEstacionamiento;
 
 public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 

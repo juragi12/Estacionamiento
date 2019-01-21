@@ -2,9 +2,11 @@ package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.VehiculoFactory;
 
-public class CrearEntidadFactory {
+public final class CrearEntidadFactory {
 
 	public static final String TIPO_FABRICA_VEHICULO = "VEHICULO";
+	
+	private CrearEntidadFactory() {}
 		
 	public static EntidadFactory getFactory(String factoryTipo) {
 		

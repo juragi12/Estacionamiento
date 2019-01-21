@@ -1,4 +1,4 @@
-package co.com.ceiba.estacionamiento.juan.giraldo.servicio;
+package co.com.ceiba.estacionamiento.juan.giraldo.controlador;
 
 import java.util.List;
 

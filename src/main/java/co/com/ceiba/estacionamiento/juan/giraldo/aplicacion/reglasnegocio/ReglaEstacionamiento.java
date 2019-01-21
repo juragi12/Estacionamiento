@@ -9,14 +9,15 @@ import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.CalculadorPrecioParqueo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida.ContextSalidaVehiculo;
 
-public class ReglaEstacionamiento {
+public final class ReglaEstacionamiento {
 
+	private ReglaEstacionamiento() {}
+	
 	public static boolean validarIngreso(Vehiculo vehiculo) {
 
 		ValidadorIngresoVehiculo validadorIngreso = new ValidadorIngresoDias();
 		ContextoIngresoVehiculo ctxValidaEntradaVeh = new ContextoIngresoVehiculo(validadorIngreso);
-		boolean valido = ctxValidaEntradaVeh.validaIngreso(vehiculo);
-		return valido;
+		return ctxValidaEntradaVeh.validaIngreso(vehiculo);
 	}
 	
 	public static int calcularPrecioParqueo(Vehiculo vehiculo, TiempoEstadia tiempoEstadia) {
@@ -25,8 +26,7 @@ public class ReglaEstacionamiento {
         		CalculadorPrecioFactory.getCalculadorPrecioParqueo(vehiculo);
   
 		ContextSalidaVehiculo ctxCalculador = new ContextSalidaVehiculo(calculadorPrecioP);
-		int precio = ctxCalculador.calcularPrecioAPagar(tiempoEstadia);
-		return precio;
+		return ctxCalculador.calcularPrecioAPagar(tiempoEstadia);
 		
 	}
 }

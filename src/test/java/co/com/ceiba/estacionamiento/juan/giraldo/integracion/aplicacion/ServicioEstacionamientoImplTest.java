@@ -9,8 +9,8 @@ import org.junit.Test;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.ServicioEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
-import co.com.ceiba.estacionamiento.juan.giraldo.servicio.ServicioEstacionamiento;
 import databuilder.VehiculoDataBuilder;
 
 public class ServicioEstacionamientoImplTest {

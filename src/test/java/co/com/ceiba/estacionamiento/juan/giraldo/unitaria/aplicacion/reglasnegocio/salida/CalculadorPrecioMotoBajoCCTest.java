@@ -23,8 +23,8 @@ public class CalculadorPrecioMotoBajoCCTest {
 		calculadorPrecioMotoBajoCC = new CalculadorPrecioMotoBajoCC();
 		dias = 1;
 		horas = 1;
-		precio = calculadorPrecioMotoBajoCC.PRECIO_DIA*dias + 
-				calculadorPrecioMotoBajoCC.PRECIO_HORA*horas;		
+		precio = calculadorPrecioMotoBajoCC.getPrecioDia()*dias + 
+				calculadorPrecioMotoBajoCC.getPrecioHora()*horas;		
 	}
 
 	

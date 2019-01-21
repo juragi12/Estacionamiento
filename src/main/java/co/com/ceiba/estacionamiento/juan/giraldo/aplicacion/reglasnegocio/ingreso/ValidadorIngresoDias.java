@@ -16,14 +16,18 @@ public class ValidadorIngresoDias implements ValidadorIngresoVehiculo {
 		// Si primera letra de placa NO es A permite Ingreso
 		String placa = vehiculo.getPlaca().toUpperCase();
 		char letraPlaca = placa.charAt(POSICION_LETRA_RESTRICCION_PLACA);	
-		if ( letraPlaca != RESTRICCION_PLACA ) return true;
+		if ( letraPlaca != RESTRICCION_PLACA ) {		
+			return true;
+		}
 		
 		Date fechaActual = new Date();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(fechaActual);
 		
 		// Si es domingo o lunes permite Ingreso 
-		if ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY ) return true;
+		if ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY ) {
+			return true;
+		}
 		
 		return ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY );
 	}
