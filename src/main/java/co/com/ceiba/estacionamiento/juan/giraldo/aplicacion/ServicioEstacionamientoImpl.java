@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.adaptador.VehiculoAdapter;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.Temporizador;
@@ -60,7 +61,8 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 		adminEstacionamiento.removerSitioParqueo(sitParEntRet);
 
 		TiempoEstadia tiempoEstadia = Temporizador.calcularTiempoEstadia(sitParEntidad.getFechaInicio());
-		return ReglaEstacionamiento.calcularPrecioParqueo(vehiculo, tiempoEstadia);
+		return ReglaEstacionamiento.calcularPrecioParqueo(
+				VehiculoAdapter.getVehiculo(sitParEntRet.getVehiculo()), tiempoEstadia);
 
 	}
 
