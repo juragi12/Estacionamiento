@@ -49,11 +49,6 @@ export default {
   props: ['vehiculoSalida'],
   data () {
     return {
-      vehiculo: {
-        placa: "BBA-111",
-        cilindraje: 250,
-        tipo: "MOTO",
-      },
       precio: 0,
       msg: 'Welcome Estacionamiento Ceiba VehiculoSalida'
     }

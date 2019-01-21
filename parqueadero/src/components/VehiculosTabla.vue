@@ -14,11 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for='(sitioParqueo, key) in listaVehiculosParqueados' :key='key' @click='vehiculoSeleccionado(sitioParqueo)' >
+      <tr v-for='(vehiculo, key) in listaVehiculosParqueados' :key='key' @click='vehiculoSeleccionado(vehiculo)' >
         <th scope="row">{{ key+1 }}</th>
-        <td>{{ sitioParqueo.vehiculo.placa }}</td>
-        <td>{{ sitioParqueo.vehiculo.tipo }}</td>
-        <td>{{ sitioParqueo.fechaInicio |moment("dddd, MMMM Do YYYY, h:mm:ss a")  }}</td>
+        <td>{{ vehiculo.placa }}</td>
+        <td>{{ vehiculo.tipo }}</td>
+        <td>{{ vehiculo.fechaInicio |moment("dddd, MMMM Do YYYY, h:mm:ss a")  }}</td>
       </tr>
     </tbody>
   </table>
@@ -72,12 +72,11 @@ export default {
 
   methods: {
 
-    vehiculoSeleccionado(sitioParqueo) {
-      console.log("tabla tipo vehiculo",sitioParqueo.vehiculo.tipo),
+    vehiculoSeleccionado(vehiculo) {
+      console.log("tabla tipo vehiculo",vehiculo.tipo),
 
-      this.vehiculo.placa = sitioParqueo.vehiculo.placa,
-      this.vehiculo.tipo = sitioParqueo.vehiculo.tipo,
-      this.vehiculo.cilindraje = sitioParqueo.vehiculo.cilindraje,
+      this.vehiculo.placa = vehiculo.placa,
+      this.vehiculo.tipo = vehiculo.tipo,
 
       this.$emit('onvehiculoseleccionado', this.vehiculo)
     },

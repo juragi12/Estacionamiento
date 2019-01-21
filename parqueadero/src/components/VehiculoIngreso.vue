@@ -50,7 +50,7 @@ export default {
   data () {
     return {
       vehiculo: {
-        placa: "BBA-111",
+        placa: null,
         cilindraje: 250,
         tipo: "MOTO",
       },
