@@ -3,13 +3,10 @@ package co.com.ceiba.estacionamiento.juan.giraldo.unitaria.aplicacion.reglasnego
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.junit.Test;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingreso.ValidadorIngresoDias;
 import databuilder.VehiculoDataBuilder;
 
