@@ -2,7 +2,7 @@ package databuilder;
 
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.CrearEntidadFactory;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.EntidadFactory;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
 public class VehiculoDataBuilder {

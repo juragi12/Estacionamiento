@@ -7,21 +7,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.adaptador.VehiculoAdapter;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.Temporizador;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.helper.TiempoEstadia;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ReglaEstacionamiento;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.repositorio.SitioParqueoEntidadService;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.repositorio.VehiculoEntidadService;
 import co.com.ceiba.estacionamiento.juan.giraldo.controlador.ServicioEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
-import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioFactory;
-import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioSitioParqueoImpl;
-import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.RepositorioVehiculoImpl;
 
+@Component
 public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 
+	@Autowired
+	VehiculoEntidadService vehiculoEntidadService;
+	
+	@Autowired
+	SitioParqueoEntidadService sitioParqueoEntidadService;
+	
+	@Autowired
+	AdminEstacionamiento adminEstacionamiento;
+	
 	/*
 	 * Registra en el estacionamiento el ingreso de un vehiculo
 	 */
@@ -34,14 +46,11 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 			throw EstacionamientoExcepcion.INGRESO_NO_AUTORIZADO.toException();
 		}
 
-		RepositorioVehiculoImpl repositorioVeiculo = RepositorioFactory.obtenerRepositorioVehiculo();
-		VehiculoEntidad vehiculoEnt = repositorioVeiculo.guardar(vehiculo);
+		VehiculoEntidad vehiculoEnt = vehiculoEntidadService.guardar(vehiculo);
 
-		AdminEstacionamiento adminEstacionamiento = new AdminEstacionamiento();
 		SitioParqueoEntidad sitParEnt = adminEstacionamiento.parquearVehiculo(vehiculoEnt);
 
-		RepositorioSitioParqueoImpl repositorioSitioParqueo = RepositorioFactory.obtenerRepositorioSitioParqueo();
-		return repositorioSitioParqueo.parquearVehiculo(sitParEnt);
+		return sitioParqueoEntidadService.parquearVehiculo(sitParEnt);
 	}
 
 	/*
@@ -50,14 +59,12 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 	@Override
 	public int registrarSalidaVehiculo(Vehiculo vehiculo) {
 
-		RepositorioSitioParqueoImpl repositorioSitioParqueo = RepositorioFactory.obtenerRepositorioSitioParqueo();
-		SitioParqueoEntidad sitParEntidad = repositorioSitioParqueo.obtenerSitioParqueo(vehiculo);
+		SitioParqueoEntidad sitParEntidad = sitioParqueoEntidadService.obtenerSitioParqueo(vehiculo);
 
 		sitParEntidad.setActivo(false);
 		sitParEntidad.setFechaFin(new Date());
-		SitioParqueoEntidad sitParEntRet = repositorioSitioParqueo.liberar(sitParEntidad);
+		SitioParqueoEntidad sitParEntRet = sitioParqueoEntidadService.liberar(sitParEntidad);
 
-		AdminEstacionamiento adminEstacionamiento = new AdminEstacionamiento();
 		adminEstacionamiento.removerSitioParqueo(sitParEntRet);
 
 		TiempoEstadia tiempoEstadia = Temporizador.calcularTiempoEstadia(sitParEntidad.getFechaInicio());

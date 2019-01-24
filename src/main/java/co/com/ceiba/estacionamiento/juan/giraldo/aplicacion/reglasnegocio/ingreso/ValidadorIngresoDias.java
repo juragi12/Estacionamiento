@@ -3,7 +3,7 @@ package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.ingre
 import java.util.Calendar;
 import java.util.Date;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 
 public class ValidadorIngresoDias implements ValidadorIngresoVehiculo {
 

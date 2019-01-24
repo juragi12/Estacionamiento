@@ -9,7 +9,8 @@ public final class Temporizador {
 	public static final double TIEMPO_EN_HORAS = (1000 * 60 * 60) ;
 	public static final int HORAS_DIA_PARQUEO = 9 ;
 	
-	private Temporizador() {}
+	private Temporizador() {
+	}
 	
 	public static TiempoEstadia calcularTiempoEstadia(Date fechaInicio) {
 		
@@ -17,7 +18,6 @@ public final class Temporizador {
 		calendar.setTime(fechaInicio);
 	
 		Date fechaFin = new Date();
-	
 		double diferenciaEnMiles = ( fechaFin.getTime() - fechaInicio.getTime() );
 		long difEnHoras = (long) Math.ceil( diferenciaEnMiles / TIEMPO_EN_HORAS  ) ;
 		
@@ -29,8 +29,7 @@ public final class Temporizador {
 			horas = 0;
 		}	
 		
-		return new TiempoEstadia((int) dias, (int) horas); 
-
+		return new TiempoEstadia((int) dias, (int) horas);
 	}
 
 }

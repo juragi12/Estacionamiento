@@ -1,6 +1,6 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.reglasnegocio.salida;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 
 public final class CalculadorPrecioFactory {

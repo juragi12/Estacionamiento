@@ -1,6 +1,5 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
 
 public abstract class EntidadFactory {
 	

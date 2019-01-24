@@ -8,17 +8,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
-import co.com.ceiba.estacionamiento.juan.giraldo.controlador.excepcion.EstacionamientoException;
-import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.controlador.excepcion.EstacionamientoException;
+
+@Component
 @Path(value = "/estacionamiento")
 public class EstacionamientoWS {
-
-	ServicioEstacionamiento servicioEstacionamiento = 
-			new ServicioEstacionamientoImpl(); 
 	
+	@Autowired
+	ServicioEstacionamiento servicioEstacionamiento;
+
 	/*
 	 * Validar los servicios REST
 	 */
@@ -35,16 +37,12 @@ public class EstacionamientoWS {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(value = "application/json")
 	@Path(value = "registraringreso")
-	public Response registrarIngreso(Vehiculo vehiculo) throws EstacionamientoException {
+	public Response registrarIngreso(Vehiculo vehiculo) {
 
 		try {
-			SitioParqueoEntidad sitioParqueo =
-					servicioEstacionamiento.registrarIngresoVehiculo(vehiculo);
-			
-			return Response.ok(sitioParqueo).build();
+			return Response.ok(servicioEstacionamiento.registrarIngresoVehiculo(vehiculo)).build();
 			
 		} catch (RuntimeException e) {
-			
 			throw new EstacionamientoException(e.getMessage());
 		}
 	} 
@@ -75,5 +73,5 @@ public class EstacionamientoWS {
 		return Response.ok(servicioEstacionamiento.consultarVehiculos()).build();	 
 		
 	}	
-	
+		
 }

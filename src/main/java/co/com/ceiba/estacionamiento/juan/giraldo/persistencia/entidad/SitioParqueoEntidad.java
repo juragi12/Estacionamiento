@@ -8,16 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 
 @Entity(name = "SitioParqueo")
-@NamedQuery(name = "SitioParqueo.findByPlacaVehiculo",
-	query = "SELECT sp FROM SitioParqueo sp, Vehiculo v WHERE sp.activo = true and v.placa = :placa")
 public class SitioParqueoEntidad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	private boolean activo;
 	private Date fechaInicio;
@@ -37,6 +34,9 @@ public class SitioParqueoEntidad {
 		this.vehiculoEntidad = vehiculoEntidad;
 	}
 
+	public SitioParqueoEntidad() {
+	}
+	
 	public Date getFechaFin() {
 		return fechaFin;
 	}
@@ -45,7 +45,7 @@ public class SitioParqueoEntidad {
 		return fechaInicio;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -69,7 +69,7 @@ public class SitioParqueoEntidad {
 		this.fechaFin = fechaFin;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

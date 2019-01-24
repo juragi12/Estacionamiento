@@ -10,7 +10,7 @@ public class VehiculoEntidad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	private String placa;
 	private int cilindraje;
 	private String tipo;
@@ -21,7 +21,11 @@ public class VehiculoEntidad {
 		this.tipo = tipo;
 	}
 
-	public int getId() {
+	public VehiculoEntidad() {
+
+	}
+	
+	public Long getId() {
 		return id;
 	}
 
@@ -37,7 +41,7 @@ public class VehiculoEntidad {
 		return tipo;
 	}	
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

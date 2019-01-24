@@ -1,6 +1,6 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.VehiculoFactory;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.VehiculoFactory;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 
 public final class CrearEntidadFactory {

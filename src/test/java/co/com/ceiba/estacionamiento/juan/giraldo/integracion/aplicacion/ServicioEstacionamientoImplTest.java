@@ -4,15 +4,33 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.AdminEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.repositorio.SitioParqueoEntidadService;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.repositorio.VehiculoEntidadService;
 import co.com.ceiba.estacionamiento.juan.giraldo.controlador.ServicioEstacionamiento;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
+import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
+import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.SitioParqueoEntidadServiceImpl;
+import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.repositorio.VehiculoEntidadServiceImpl;
+import databuilder.SitioParqueoDataBuilder;
 import databuilder.VehiculoDataBuilder;
 
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@Transactional
 public class ServicioEstacionamientoImplTest {
 
 	private final String TIPO_MOTO = "MOTO";
@@ -20,8 +38,47 @@ public class ServicioEstacionamientoImplTest {
 	private final int NUM_MAX_CARROS = 20;
 	private final int NUM_MAX_MOTOS = 10;
 	
-	ServicioEstacionamiento servicioEstacionamiento =
-			new ServicioEstacionamientoImpl(); 
+    VehiculoDataBuilder vehiculoDataBuilder;
+    SitioParqueoDataBuilder sitioParqueoDataBuilder;
+    VehiculoEntidad vehiculoGuardado;
+	
+	@TestConfiguration
+	static class ServicioEstacionamientoImplTestContextConfiguration {
+		
+		@Bean
+		public ServicioEstacionamiento servicioEstacionamiento() {
+			return new ServicioEstacionamientoImpl();
+		}
+		
+		@Bean
+		public VehiculoEntidadService vehiculoEntidadService() {
+			return new VehiculoEntidadServiceImpl();
+		}
+		
+		@Bean
+		public SitioParqueoEntidadService sitioParqueoEntidadService() {
+			return new SitioParqueoEntidadServiceImpl();
+		}
+		
+		@Bean
+		public AdminEstacionamiento adminEstacionamiento() {
+			return new AdminEstacionamiento();
+		}	
+		
+	}
+		
+	@Autowired
+	ServicioEstacionamiento servicioEstacionamiento;
+	
+	@Before
+	public void init() {
+		
+		vehiculoDataBuilder = 
+				new VehiculoDataBuilder();
+		
+		sitioParqueoDataBuilder = 
+				new SitioParqueoDataBuilder(); 
+	}
 	
 	@Test
 	public void parquearCarro() {

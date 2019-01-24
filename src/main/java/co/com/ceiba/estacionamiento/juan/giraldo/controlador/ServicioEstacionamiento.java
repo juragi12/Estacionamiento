@@ -2,7 +2,7 @@ package co.com.ceiba.estacionamiento.juan.giraldo.controlador;
 
 import java.util.List;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 
 public interface ServicioEstacionamiento {

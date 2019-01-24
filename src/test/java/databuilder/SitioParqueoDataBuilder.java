@@ -8,10 +8,9 @@ import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEn
 
 public class SitioParqueoDataBuilder {
 
-
 	private static final boolean ACTIVO = true;
 	private static final Date FECHA_INICIO = new Date();
-	private static final Date FECHA_FIN = new Date();;
+	private static final Date FECHA_FIN = new Date();
 	private static final int POSICION = 1;
 	
 	private boolean activo;
@@ -53,6 +52,30 @@ public class SitioParqueoDataBuilder {
 		return this;
 	}
 	
+	public VehiculoEntidad getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(VehiculoEntidad vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public int getPosicion() {
+		return posicion;
+	}
+	
 	public SitioParqueo buildSitioParqueo() {
 		return new SitioParqueo(this.activo, this.fechaInicio, this.fechaFin, this.posicion);
 	}
@@ -60,6 +83,25 @@ public class SitioParqueoDataBuilder {
 	public SitioParqueoEntidad buildSitioParqueoEntidad() {
 		return new SitioParqueoEntidad(this.activo, this.fechaInicio, 
 				this.fechaFin, this.posicion, this.vehiculo );
+	}
+	
+	
+	public boolean compararSitiosParqueo(SitioParqueoEntidad sitioParqueoActual) {
+		
+		if (!(this.getPosicion() == sitioParqueoActual.getPosicion())) return false;
+		
+		if (!(this.isActivo() == sitioParqueoActual.isActivo() )) return false;
+		
+		if (! this.getVehiculo().getPlaca().equalsIgnoreCase(
+				sitioParqueoActual.getVehiculo().getPlaca())) return false;
+		
+		if (this.getVehiculo().getCilindraje() != 
+				sitioParqueoActual.getVehiculo().getCilindraje()) return false;
+				
+		if (! this.getVehiculo().getTipo().equalsIgnoreCase(
+				sitioParqueoActual.getVehiculo().getTipo()) ) return false;
+				
+		return true;
 	}
 	
 	

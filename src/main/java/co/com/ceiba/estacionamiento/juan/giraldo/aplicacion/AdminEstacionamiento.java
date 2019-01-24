@@ -5,10 +5,13 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqueoEntidad;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
+@Service
 public class AdminEstacionamiento {
 	
 	public static final String MOTO = "MOTO";

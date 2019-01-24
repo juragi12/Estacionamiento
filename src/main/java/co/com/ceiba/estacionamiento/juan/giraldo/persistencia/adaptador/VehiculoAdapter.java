@@ -1,6 +1,6 @@
 package co.com.ceiba.estacionamiento.juan.giraldo.persistencia.adaptador;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.vehiculo.Vehiculo;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
 public final class VehiculoAdapter {
