@@ -32,7 +32,7 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 	SitioParqueoEntidadService sitioParqueoEntidadService;
 	
 	@Autowired
-	AdminEstacionamiento adminEstacionamiento;
+	AdminEstacionamientoImpl adminEstacionamiento;
 	
 	/*
 	 * Registra en el estacionamiento el ingreso de un vehiculo
@@ -81,7 +81,7 @@ public class ServicioEstacionamientoImpl implements ServicioEstacionamiento {
 		
 		Format formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		return AdminEstacionamiento.getParqueadero().stream().map(
+		return AdminEstacionamientoImpl.getParqueadero().stream().map(
 				 temp -> {HashMap<String, String> lista = new HashMap<String, String>(); 
 				 lista.put( "placa", temp.getVehiculo().getPlaca() );
 				 lista.put( "tipo", temp.getVehiculo().getTipo() );

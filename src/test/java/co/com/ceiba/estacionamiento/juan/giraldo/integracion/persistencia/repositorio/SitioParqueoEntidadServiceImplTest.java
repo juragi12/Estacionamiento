@@ -35,14 +35,14 @@ public class SitioParqueoEntidadServiceImplTest {
 	static class SitioParqueoEntidadServiceImplTestContextConfiguration {
 		
 		@Bean
-		public SitioParqueoEntidadService sitioParqueoEntidadService() {
+		public SitioParqueoEntidadService sitioParqueoEntidadServiceTest() {
 			return new SitioParqueoEntidadServiceImpl();
 		}
 		
 	}
 	
 	@Autowired
-	SitioParqueoEntidadService sitioParqueoEntidadService;
+	SitioParqueoEntidadService sitioParqueoEntidadServiceTest;
 	
     @Autowired
     private VehiculoEntidadRepository vehiculoEntidadRepository;
@@ -72,7 +72,7 @@ public class SitioParqueoEntidadServiceImplTest {
     	
     	
         // when
-    	SitioParqueoEntidad sitioParqueoEntidadGuardado = sitioParqueoEntidadService.parquearVehiculo(sitioParqueoEntidad);	 
+    	SitioParqueoEntidad sitioParqueoEntidadGuardado = sitioParqueoEntidadServiceTest.parquearVehiculo(sitioParqueoEntidad);	 
         
         // then
         assertTrue( sitioParqueoDataBuilder.compararSitiosParqueo(sitioParqueoEntidadGuardado) );
@@ -86,11 +86,11 @@ public class SitioParqueoEntidadServiceImplTest {
     	SitioParqueoEntidad sitioParqueoEntidad = sitioParqueoDataBuilder
     			.setVehiculoEntidad(vehiculoGuardado)
     			.buildSitioParqueoEntidad();
-    	sitioParqueoEntidadService.parquearVehiculo(sitioParqueoEntidad);
+    	sitioParqueoEntidadServiceTest.parquearVehiculo(sitioParqueoEntidad);
     	
         // when	
     	SitioParqueoEntidad sitioParqueoEntidadObtenido = 
-    			sitioParqueoEntidadService.obtenerSitioParqueo(vehiculoDataBuilder.buildVehiculo());
+    			sitioParqueoEntidadServiceTest.obtenerSitioParqueo(vehiculoDataBuilder.buildVehiculo());
         
         // then
         assertTrue( sitioParqueoDataBuilder.compararSitiosParqueo(sitioParqueoEntidadObtenido) );
@@ -105,16 +105,16 @@ public class SitioParqueoEntidadServiceImplTest {
     			.setVehiculoEntidad(vehiculoGuardado)
     			.buildSitioParqueoEntidad();
     	
-    	sitioParqueoEntidadService.parquearVehiculo(sitioParqueoEntidad);
+    	sitioParqueoEntidadServiceTest.parquearVehiculo(sitioParqueoEntidad);
     	
     	SitioParqueoEntidad sitioParqueoEntidadObtenido = 
-    			sitioParqueoEntidadService.obtenerSitioParqueo(vehiculoDataBuilder.buildVehiculo());
+    			sitioParqueoEntidadServiceTest.obtenerSitioParqueo(vehiculoDataBuilder.buildVehiculo());
     	
     	sitioParqueoDataBuilder.setActivo(false);
     	
         // when
     	SitioParqueoEntidad sitioParqueoEntidadLiberado = 
-    			sitioParqueoEntidadService.liberar(sitioParqueoEntidadObtenido);
+    			sitioParqueoEntidadServiceTest.liberar(sitioParqueoEntidadObtenido);
         
         // then
         assertTrue( sitioParqueoDataBuilder.compararSitiosParqueo(sitioParqueoEntidadLiberado) );

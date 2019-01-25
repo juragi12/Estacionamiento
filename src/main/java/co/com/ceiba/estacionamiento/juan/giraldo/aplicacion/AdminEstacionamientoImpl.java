@@ -12,7 +12,7 @@ import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.SitioParqu
 import co.com.ceiba.estacionamiento.juan.giraldo.persistencia.entidad.VehiculoEntidad;
 
 @Service
-public class AdminEstacionamiento {
+public class AdminEstacionamientoImpl {
 	
 	public static final String MOTO = "MOTO";
 	public static final String CARRO = "CARRO";

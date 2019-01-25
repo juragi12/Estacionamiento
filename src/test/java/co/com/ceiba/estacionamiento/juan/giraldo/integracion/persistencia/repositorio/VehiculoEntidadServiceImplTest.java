@@ -27,14 +27,14 @@ public class VehiculoEntidadServiceImplTest {
 	static class VehiculoEntidadServiceImplTestTestContextConfiguration {
 		
 		@Bean
-		public VehiculoEntidadService vehiculoEntidadService() {
+		public VehiculoEntidadService vehiculoEntidadServiceTest() {
 			return new VehiculoEntidadServiceImpl();
 		}
 		
 	}
 	
 	@Autowired
-	VehiculoEntidadService vehiculoEntidadService;
+	VehiculoEntidadService vehiculoEntidadServiceTest;
 		
 	VehiculoDataBuilder vehiculoDataBuilder;
 	
@@ -51,8 +51,8 @@ public class VehiculoEntidadServiceImplTest {
     	Vehiculo vehiculo = vehiculoDataBuilder.buildVehiculo();    	
     	
         // when
-    	VehiculoEntidad vehiculoGuardado = vehiculoEntidadService.guardar(vehiculo);  
-    	vehiculoEntidadService.borrar(vehiculo);
+    	VehiculoEntidad vehiculoGuardado = vehiculoEntidadServiceTest.guardar(vehiculo);  
+    	vehiculoEntidadServiceTest.borrar(vehiculo);
         
         // then
         assertTrue( vehiculoDataBuilder.compararVehiculos(vehiculoGuardado) );
@@ -62,11 +62,11 @@ public class VehiculoEntidadServiceImplTest {
 	public void whenByPlaca_ThenReturnVehiculo() {
         // given
     	Vehiculo vehiculo = vehiculoDataBuilder.buildVehiculo();   
-    	vehiculoEntidadService.guardar(vehiculo);   
+    	vehiculoEntidadServiceTest.guardar(vehiculo);   
     	
         // when
-    	VehiculoEntidad vehiculoEncontrado = vehiculoEntidadService.byPlaca( vehiculo );   
-    	vehiculoEntidadService.borrar(vehiculo);
+    	VehiculoEntidad vehiculoEncontrado = vehiculoEntidadServiceTest.byPlaca( vehiculo );   
+    	vehiculoEntidadServiceTest.borrar(vehiculo);
     	
         // then
         assertTrue( vehiculoDataBuilder.compararVehiculos(vehiculoEncontrado) );

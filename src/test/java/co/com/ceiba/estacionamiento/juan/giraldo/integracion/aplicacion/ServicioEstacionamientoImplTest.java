@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.AdminEstacionamiento;
+import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.AdminEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.ServicioEstacionamientoImpl;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.entidad.Vehiculo;
 import co.com.ceiba.estacionamiento.juan.giraldo.aplicacion.excepcion.EstacionamientoExcepcion;
@@ -61,8 +61,8 @@ public class ServicioEstacionamientoImplTest {
 		}
 		
 		@Bean
-		public AdminEstacionamiento adminEstacionamiento() {
-			return new AdminEstacionamiento();
+		public AdminEstacionamientoImpl adminEstacionamiento() {
+			return new AdminEstacionamientoImpl();
 		}	
 		
 	}
